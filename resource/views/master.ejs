@@ -1,0 +1,137 @@
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/fonts/font.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/page.css">
+    <title>index</title>
+    <%- style %>
+</head>
+
+<!-- This Is Body Section  -->
+<%- body %>
+    <!-- This Is Body Section  -->
+        <!-- Footer Start -->
+        <footer>
+            <img class="ft-container" src="/images/Group-11302.png" alt="">
+            <a href="/">
+                <img class="home-btn" src="/images/home.svg" alt="">
+            </a>
+            <div class="more-btn flex-row">
+                <div class="flex-row">
+                    <a href="https://finotax.co/">
+                        <img class="menu-btn" src="/images/web-icon.svg" alt="وب سایت">
+                        وب سایت
+                    </a>
+
+                    <% if(access){ %>
+                    <a href="/user-profile">
+                        <img class="menu-btn" src="/images/user-icon.svg" alt="پروفایل">
+                        پروفایل
+                    </a>
+                        <% }else{ %> 
+                        <a href="/auth">
+                            <img class="menu-btn" src="/images/user-icon.svg" alt="پروفایل">
+                           ورود | ثبت نام
+                        </a>
+
+                        <% } %> 
+
+                </div>
+                <div class="flex-row">
+                    <% if(users && users.isActive){ %>
+                    <a href="/user/subscriptionStatus">
+                        <img class="menu-btn" src="/images/account.svg" alt="اشتراک">
+                        وضعیت اشتراک
+                    </a>
+                    <% }else{ %> 
+                    <a href="/user/subscribe">
+                        <img class="menu-btn" src="/images/account.svg" alt="اشتراک">
+                        خرید اشتراک
+                    </a>
+                    <% } %> 
+                    <a href="#" id="back">
+                        <img class="menu-btn" src="/images/back-icon.svg" alt="بازگشت">
+                        بازگشت
+                    </a>
+                </div>
+            </div>
+
+            <div id="accPage" class="page flex-column blockPage">
+                <a href="#" id="down">
+                    <img class="menu-btn" src="/images/back-icon.svg" alt="بازگشت" style="transform: rotate(-90deg); margin: auto;">
+                </a>
+                <h2>آموزش حسابداری</h2>
+                <div class="flex-column">
+                    <a href="/acc1" class="sath">
+                        سطح مقدماتی
+                    </a>
+                    <a href="/acc2" class="sath">
+                        سطح متوسط
+                    </a>
+                    <a href="/acc3" class="sath">
+                        سطح پیشرفته
+                    </a>
+                </div>
+            </div>
+            
+            <div id="taxPage" class="page flex-column blockPage">
+                <a href="#" id="down2">
+                    <img class="menu-btn" src="/images/back-icon.svg" alt="بازگشت" style="transform: rotate(-90deg); margin: auto;">
+                </a>
+                <h2>آموزش مالیات</h2>
+                <div class="flex-column">
+                    <a href="/tax1" class="sath">
+                        سطح مقدماتی
+                    </a>
+                    <a href="/tax2" class="sath">
+                        سطح متوسط
+                    </a>
+                    <a href="/tax3" class="sath">
+                        سطح پیشرفته
+                    </a>
+                </div>
+            </div>
+
+            <div id="financePage" class="page flex-column blockPage">
+                <a href="#" id="down3">
+                    <img class="menu-btn" src="/images/back-icon.svg" alt="بازگشت" style="transform: rotate(-90deg); margin: auto;">
+                </a>
+                <h2>آموزش مالی</h2>
+                <div class="flex-column">
+                    <a href="/fin1" class="sath">
+                        سطح مقدماتی
+                    </a>
+                    <a href="/fin2" class="sath">
+                        سطح متوسط
+                    </a>
+                    <a href="/fin3" class="sath">
+                        سطح پیشرفته
+                    </a>
+                </div>
+            </div>
+
+
+        </footer>
+        <!-- Footer End -->
+
+
+        <div class="alert" id="alert">
+            <img src="./images/alert.png" alt="">
+            <h6>جهت دسرترسی به این بخش نیاز به خرید اشتراک می باشد</h6>
+            <div class="flex-row">
+                <a href="/user/subscribe" class="success">مشاهده پلن ها</a>
+                <a href="#" class="close">انصراف</a>
+            </div>
+        </div>
+        
+    <%- script %>
+        <script src="/js/bt-container.js"></script> 
+        <script src="/js/back-for-index-page.js"></script>
+        <script src="/js/alert.js"></script>
+
+</html>

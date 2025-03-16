@@ -1,0 +1,213 @@
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="/admin/fonts/font.css">
+    <link rel="stylesheet" href="/admin/fontawesome-free/css/all.min.css">
+    <link rel="icon" type="image" href="../admin/images/finotax-little.png">
+
+    <link rel="stylesheet" href="/admin/css/cms.css">
+    <%- style %>
+        <title><%- title %></title>
+</head>
+
+<body>
+    <!-- ---------------------------------Start Container---------------------------------  -->
+    <div class="d-flex ">
+        <!-- ---------------------------------Start SideBar---------------------------------  -->
+        <div class="fake"></div>
+        <div id="menu" class=" dashboard">
+            <div class="accord-btn d-flex " id="menuButton" onclick="openMenu()">
+                <a><i id="icon" class="fas fa-caret-left"></i></a>
+            </div>
+            <a href="/" class="aside-header d-flex justify-content-center align-content-center ">
+                <img class="admin-logo-name my-auto" src="/admin/images/logo-finotax.webp">
+                <img class="admin-logo img-fluid my-auto" src="/admin/images/finotax-little.png" alt="admin-logo">
+            </a>
+            <% if(users.image){ %>
+                <div class="d-flex justify-content-center p-3">
+                    <img class="img-fluid rounded-circle admin-user-image" src="<%- users.image %>"
+                        alt="<%- users.name %>">
+                </div>
+                <% }else{ %>
+                    <div class="d-flex justify-content-center p-3">
+                        <img class="img-fluid rounded-circle admin-user-image" src="/admin/images/userIcon.jpg"
+                            alt="UserImage">
+                    </div>
+                    <% } %>
+                        <div class="d-flex justify-content-center "><span class="admin-role">کاربر ادمین</span></div>
+                        <div class="d-flex justify-content-center "><span class="admin-user-name"><%- users.name %></span>
+                        </div>
+                        <div class="d-flex justify-content-start "><a href="#" class="title-li">بخش اصلی :</a></div>
+                        <ul class="d-flex justify-content-start my-auto">
+                            <li class="d-flex justify-content-strat li-dash">
+                                <a href="/admin">
+                                    <i class="fas fa-fw fa-tachometer-alt "></i>
+                                    <span class="ul-title">پیشخوان</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="d-flex justify-content-start "><a href="#" class="title-li">فروشگاه :</a></div>
+                        <ul class="d-flex flex-column justify-content-start my-auto">
+                         
+                                <li class="d-flex justify-content-strat li-dash">
+                                    <a href="/admin/subscription">
+                                        <i class="fas fa-luggage-cart "></i>
+                                        <span class="ul-title"> اشتراک ها</span>
+                                    </a>
+                                </li>
+                                <li class="d-flex justify-content-strat li-dash">
+                                    <a href="/admin/question">
+                                        <i class="fas fa-question-circle"></i>
+                                        <span class="ul-title">سوالات بخش ها</span>
+                                    </a>
+                                </li>
+                              
+                                    <li class="d-flex justify-content-strat li-dash">
+                                        <a href="/admin/categorys">
+                                            <i class="	fas fa-layer-group"></i>
+                                            <span class="ul-title">دسته بندی ها</span>
+                                        </a>
+                                    </li>
+                                
+                                        <li class="d-flex justify-content-strat li-dash">
+                                            <a href="/admin/videos">
+                                                <i class="far fa-play-circle"></i>
+                                                <span class="ul-title">ویدیو و رسانه </span>
+                                            </a>
+                                        </li>
+                                   
+                                                <li class="d-flex justify-content-strat li-dash">
+                                                    <a href="/admin/articles">
+                                                        <i class="	far fa-clone"></i>
+                                                        <span class="ul-title">مقالات سایت</span>
+                                                    </a>
+                                                </li>
+                        </ul>
+                        <div class="d-flex justify-content-start "><a href="#" class="title-li">تنظیمات :</a></div>
+                        <ul class="d-flex flex-column justify-content-start my-auto">
+                            <li class="d-flex justify-content-strat li-dash">
+                                <a href="/admin/users">
+                                    <i class="fas fa-user-friends"></i>
+                                    <span class="ul-title">مدیریت کاربران</span>
+                                </a>
+                            </li>
+                            <li class="d-flex justify-content-strat li-dash">
+                                <a href="/admin/permissions">
+                                    <i class="fas fa-user-cog"></i>
+                                    <span class="ul-title">دسترسی کاربران</span>
+                                </a>
+                            </li>
+                            <li class="d-flex justify-content-strat li-dash">
+                                <a href="/admin/setting">
+                                    <i class="fa fa-cogs"></i>
+                                    <span class="ul-title">سایر تنظیمات </span>
+                                </a>
+                            </li>
+                        </ul>
+        </div>
+        <!-- ---------------------------------End SideBar---------------------------------  -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <!-- ---------------------------------Start Header---------------------------------  -->
+                <div class="header d-flex  align-items-center justify-content-end">
+                    <!-- <div class="d-flex justify-content-start align-items-center humber-menu">
+                        <a id="menuButton" onclick="openMenu()"><i id="icon" class="fas fa-align-justify"></i></a>
+                    </div> -->
+                    <div title="منو" class="hambergermenu " id="menuButton2" onclick="openMenu()"><img
+                            src="/image/iconhambergermenu.svg" alt="iconhambergermenu"></div>
+                    <div class="d-flex justify-content-start align-items-center searchbox">
+
+                        <a href="#"><i class="fa fa-search"></i></a>
+                        <input class="searchinput" type="text" placeholder="   ...">
+                    </div>
+                    <div class="d-flex p-3 align-items-center .group-icon">
+                        <a href="/admin/myTeam" class="fa fa-users icon" data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" data-bs-custom-class="custom-tooltip" data-bs-title="تیم ما"></a>
+
+                        <a href="/admin/tickets" class="fas fa-ticket-alt icon " data-bs-toggle="tooltip"
+                            data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                            data-bs-title="تیکت ها"></a>
+
+                        <a href="/admin/comments" class="far fa-comment-alt icon position-relative"
+                            data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                            data-bs-title="نظرات"><span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                0
+                            </span></a>
+                    </div>
+                    <div class="topbar"></div>
+                    <a href="#" class="d-flex user-pad align-items-center dropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <% if(users.image){ %>
+                            <div>
+                                <img class="img-fluid user-image rounded-circle" src="<%- users.image %>"
+                                    alt="<%- users.name %>">
+                                <span class="online rounded-circle "></span>
+                            </div>
+                            <% }else{ %>
+                                <div>
+                                    <img class="img-fluid user-image rounded-circle" src="/admin/images/userIcon.jpg"
+                                        alt="userImage">
+                                    <span class="online rounded-circle "></span>
+                                </div>
+                                <% } %>
+                    </a>
+                    <ul class="dropdown-menu p-0">
+                        <li class=" dropheader d-flex justify-content-start  ">
+                            <% if(users.image){ %>
+                                <div class="p-1">
+                                    <img class="img-fluid rounded-circle drop-image" src="<%- users.image %>"
+                                        alt="<%- users.name %>">
+                                </div>
+                                <% }else{ %>
+                                    <div class="p-1">
+                                        <img class="img-fluid rounded-circle drop-image"
+                                            src="/admin/images/userIcon.jpg" alt="userImage">
+                                    </div>
+                                    <% } %>
+                                        <div class="wellcome p-2">خوش آمدید ،<span class="userName"><%- users.name
+                                                    %></span></div>
+                        </li>
+                        <li class="d-flex justify-content-start align-items-center"><a class="dropitem1 "
+                                href="/admin/user/update"><i class="far fa-user-circle dropicon"></i>مشاهده پروفایل</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li class="d-flex justify-content-start"><a class="dropitem2" href="#"><i
+                                    class="far fa-edit dropicon"></i>ویرایش پروفایل</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li class="d-flex justify-content-start"><a class="dropitem3" href="/auth/logout"><i
+                                    class="fas fa-power-off dropicon"></i>خروج</a></li>
+                    </ul>
+                </div>
+                <!-- ---------------------------------end Header---------------------------------  -->
+                <!-- ---------------------------------Start Main Contents---------------------------------  -->
+                <%- body %>
+                    <!-- ---------------------------------End Main Contents---------------------------------  -->
+            </div>
+        </div>
+    </div>
+    <!-- ---------------------------------End Container---------------------------------  -->
+    <!-- ---------------------------------Scripts--------------------------------- -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/admin/js/tooltip.js"></script>
+    <script src="/admin/js/menu.js"></script>
+    <%- script %>
+   
+</body>
+
+
+</html>

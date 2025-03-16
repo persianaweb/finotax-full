@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="/css/profile.css">
+
+<div class="container main-section d-flex flex-row-reverse">
+ 
+    <div class="d-flex flex-column section2 p-3">
+        <div class="w-100 title-section d-flex  justify-content-end align-items-center">
+            <span><%- ticket.code %></span>
+            <span class="ml-1 mr-auto">: شماره تیکت</span>
+            <span><%- ticket.title %></span>
+            <span class="ml-1">: موضوع تیکت</span>
+        </div>
+        <div class="d-flex flex-column fadeing w-100 justify-content-end align-items-center p-1">
+            <div class="clint-chat">
+                <%- ticket.text %>
+            </div>
+        </div>
+        <% parent.forEach(par=>{ %>
+            <% if(par.title==='Admin' ){ %>
+                <div class="d-flex flex-column fadeing w-100 justify-content-end align-items-center p-1">
+                    <div class="admin-chat">
+                        <span><%- par.title %> : </span>
+                        <%- par.text %>
+                    </div>
+                </div>
+                <% } %>
+                    <% if(par.title==='Client' ){ %>
+                        <div class="d-flex flex-column fadeing w-100 justify-content-end align-items-center p-1">
+                            <div class="clint-chat">
+                                <%- par.text %>
+                            </div>
+                        </div>
+                        <% } %>
+                            <% }) %>
+                            <% if(ticket.check){ %>
+                                <form action="/replay-send" method="post"
+                                    class="d-flex justify-content-between align-items-center mt-auto send-box">
+                                    <input type="hidden" name="parent" value="<%- ticket.code %>">
+                                    <input type="hidden" name="codeNumber" value="<%- ticket.code %>">
+                                    <button class="btn" type="submit">
+                                        <i class="fas fa-location-arrow"></i>
+                                    </button>
+                                    <input type="text" placeholder="... پاسخ خود را بنویسید" name="text">
+                                </form>
+                                <% } %>
+    </div>
+</div>
+
+<script src="/js/toggleMenu.js"></script>

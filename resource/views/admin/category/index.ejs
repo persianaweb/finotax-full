@@ -1,0 +1,99 @@
+<link rel="stylesheet" href="/admin/css/content.css">
+
+<div class="content-main">
+    
+
+    <div class=" m-4  p-3 main-content table-responsive">
+        <div class="d-flex align-items-center justify-content-start my-auto content-header">
+            <div>
+                <h6>دسته بندی مطالب</h6>
+                <p>در اینجا می توانید دسته بندی های خود را مدیریت کنید.</p>
+            </div>
+            <div class="container-btn-add">
+                <a href="/admin/categorys/createArticle" class="btn-add my-auto" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-custom-class="custom-tooltip" data-bs-title="افزودن دسته بندی جدید"><i
+                        class="fas fa-plus m-auto"></i>افزودن دسته بندی</a>
+            </div>
+        </div>
+        <table class="custom-table container">
+            <thead>
+                <tr>
+                    <th>عنوان دسته بندی</th>
+                    <th>جایگاه دسته بندی</th>
+                    <th>تنظیمات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% categoryArticle.docs.forEach(category =>{ %> 
+                <tr>
+                    <td><%= category.name %></td>
+                    <td><%- category.parent ? category.parent.name : 'دسته اصلی' %></td>
+                    <td class="d-flex justify-content-center">
+                        <a href="/admin/categorys/<%- category.id %>/editArticle">
+                        <button class="btn pencil" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-custom-class="custom-tooltip" data-bs-title="ویرایش" style="margin-left: 5px;"><i
+                                class="fas fa-pencil-alt"></i>
+                            </button>
+                        </a>
+                                <form action="/admin/categorys/<%- category.id %>/article" method="POST">
+                        <button class="btn trash" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-custom-class="custom-tooltip" data-bs-title="حذف "><i
+                                class="far fa-trash-alt"></i></button>
+                            </form>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <div class="d-flex p-3 justify-content-center">
+            <nav>
+                <% if(categoryArticle.pages >0){ %> 
+                <ul class="d-flex paginate">
+                    <% if (categoryArticle.page == 1) { %>
+                    <a class="p-link " >
+                        <li class="pag">قبلی</li>
+                    </a>
+                    <% } else { %>
+                        <a class="p-link " href="/admin/categorys/?page=<%= 1 %>">
+                            <li class="pag">قبلی</li>
+                        </a>
+                        <% } %>
+                        <% var i = ((categoryArticle.page) > 5 ? (categoryArticle.page) - 4 : 1) %>
+                        <% if (i !== 1) { %>
+                    <a class="p-link">
+                        <li class="pag">...</li>
+                    </a>
+                    <% } %>
+                    <% for (; i <= ((categoryArticle.page) + 4) && i <= categoryArticle.pages; i++) { %>
+                        <% if (i == categoryArticle.page) { %>
+                    <a class="p-link" href="<%= i %>">
+                        <li class="pag"><%= i %></li>
+                    </a>
+                    <% } else { %>
+                    <a class="p-link" href="/admin/categorys/?page=<%= i %>">
+                        <li class="pag"><%= i %></li>
+                    </a>
+                    <% } %>
+                    <% if (i == (categoryArticle.page) + 4 && i < categoryArticle.pages) { %>
+                        <a class="p-link">
+                            <li class="pag">...</li>
+                        </a>
+                    <% } %>
+                    <% } %>
+                    <% if (categoryArticle.page == categoryArticle.pages) { %>
+                    <a class="p-link">
+                        <li class="pag">بعدی</li>
+                    </a>
+                    <% } else { %>
+                        <a class="p-link" href="/admin/categorys/?page=<%= categorys.pages %>">
+                            <li class="pag">بعدی</li>
+                        </a>
+                        <% } %>
+                </ul>
+                <% } %>
+            </nav>
+        </div>
+    </div>
+
+
+</div>

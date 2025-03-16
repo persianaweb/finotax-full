@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="/css/cources.css">
+
+<section class="main flex-column">
+    <div class="header flex-column">
+        <h1 class="intro-fade">ACCOUNTING</h1>
+        <p class="matn">سرفصل دوره مقدماتی حسابداری </p>
+    </div>
+
+    <div class="container">
+        <% articles.forEach(article=>{ %>
+            <a href="/article/<%- article.slug %>" class="flip-box">
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <img src="<%= article.image %>" alt="<%= article.title %>">
+                       <div>
+                        <img src="./images/check_5610944.png" alt="">
+                        <p>
+                            <%= article.title %>
+                        </p>
+                       </div>
+                    </div>
+                </div>
+            </a>
+            <% }) %>
+
+    </div>
+</section>
+
+<!-- <script src="/js/flip-box.js"></script> -->

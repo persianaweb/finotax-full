@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="/admin/css/content.css">
+
+<div class="content-main">
+    <div class=" m-4  p-3 main-content table-responsive">
+        <div class="d-flex align-items-center justify-content-start my-auto content-header">
+            <div>
+                <h6>همه تیکت ها</h6>
+                <p>در اینجا می توانید تیکت های خود را مدیریت کنید.</p>
+            </div>
+           
+        </div>
+        <table class="custom-table container">
+            <thead>
+                <tr>
+                    <th>شماره تیکت</th>
+                    <th>کاربر</th>
+                    <th>موضوع تیکت</th>
+                    <th>پاسخ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% tickets.forEach(ticket=> { %>
+                    <% if( ticket.title !=='Admin' && ticket.title !=='Client' ){ %>
+                        <tr>
+                            <td><%- ticket.code %></td>
+                            <td><%- ticket.user.mobileNumber %></td>
+                            <td><%- ticket.title %></td>
+                                    <td class="d-flex justify-content-center">
+                                        <a href="/admin/tickets/replay/<%- ticket.id %>">
+                                            <button class="btn pencil" data-bs-toggle="tooltip"
+                                                data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                                                data-bs-title="پاسخ" style="margin-left: 5px;"><i
+                                                    class="far fa-eye"></i>
+                                            </button>
+                                        </a>
+                                        <% if(ticket.check ){ %>
+                                            <a href="/admin/tickets/closed/<%- ticket.id %>">
+                                                <button class="btn trash" data-bs-toggle="tooltip"
+                                                    data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                                                    data-bs-title="بستن تیکت" style="margin-left: 5px;"><i
+                                                        class="fas fa-power-off"></i>
+                                                </button>
+                                            </a>
+                                            <% } %>
+                                    </td>
+                        </tr>
+                        <% } %>
+                            <% }) %>
+            </tbody>
+        </table>
+        
+    </div>
+
+</div>

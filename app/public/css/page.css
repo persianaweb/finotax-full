@@ -1,0 +1,184 @@
+.auth {
+    display: flex;
+    flex-direction: column;
+}
+
+.page,
+.auth,
+.profile {
+    position: relative;
+    margin-top: 10px;
+    justify-content: start;
+    align-items: center;
+    height: 450px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px inset;
+}
+
+.page::before,
+.auth::before,
+.profile::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    background-size: 45%;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.page::before {
+    background-image: url('./../images/accounting_4142644.png');
+}
+
+/* .auth::before {
+    background-image: url('./../images/auth.png');
+    background-size: 85% !important;
+} */
+
+.profile::before {
+    background-image: url('./../images/profile-page.webp');
+    background-size: 65% !important;
+}
+
+.page h2,
+.auth h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.auth h2 {
+    color: #021fdd;
+}
+
+.page div,
+.auth div {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.sath {
+    font-size: 16px;
+    color: white;
+    width: 80% !important;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.sath:nth-child(1) {
+    background-color: #021fdd;
+}
+
+.sath:nth-child(2) {
+    background-color: #415aff;
+}
+
+.sath:nth-child(3) {
+    background-color: #7f91ff;
+}
+
+.auth form {
+    width: 80%;
+}
+
+.auth input {
+    border: none;
+    width: 100%;
+    border-radius: 8px;
+    color: #415aff;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    padding: 15px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.auth input::placeholder {
+    color: #7f91ff;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.auth input:focus-visible {
+    border: none;
+    outline: none;
+}
+
+.auth button {
+    border: none;
+    background-color: #415aff;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.profile-name {
+    width: 100%;
+    height: 20px;
+    background-color: #415aff;
+    color: white;
+    position: relative;
+}
+
+.wave {
+    margin-bottom: 50px;
+    width: 100%;
+    margin-top: 0;
+}
+
+.profile-name h2 {
+    position: absolute;
+    font-size: 16px;
+    bottom: -70px;
+    left: 120px;
+    z-index: 4;
+}
+
+.profile-name h3 {
+    position: absolute;
+    font-size: 14px;
+    bottom: -45px;
+    left: 130px;
+    z-index: 4;
+}
+
+.profile-img {
+    width: 30%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 8px;
+    object-fit: cover;
+    position: absolute;
+    bottom: -70px;
+    right: 15px;
+}
+
+.pro-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    text-align: right;
+    width: 80%;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 10px 0px;
+    color: #021fdd;
+}
+
+.pro-btn img {
+    width: 20px;
+    margin-left: 10px;
+}

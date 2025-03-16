@@ -1,0 +1,29 @@
+
+
+
+    <section class="main flex-column">
+        <h2>وضعیت اشتراک شما</h2>
+
+        <% if (user && subscription) { %>
+            <p><strong>نام اشتراک:</strong>
+                <%= subscription.name %>
+            </p>
+            <p><strong>مدت اشتراک:</strong>
+                <%= subscription.duration %> ماه
+            </p>
+            <p><strong>تاریخ پایان:</strong>
+                <%= new Date(user.subscriptionEndDate).toLocaleDateString('fa-IR') %>
+            </p>
+            <p><strong>روزهای باقی‌مانده:</strong>
+                <%= remainingDays %> روز
+            </p>
+
+            <% if (remainingDays===0) { %>
+                <p style="color: red;">اشتراک شما به پایان رسیده است. لطفاً تمدید کنید.</p>
+                <% } %>
+
+                    <% } else { %>
+                        <p>شما هیچ اشتراک فعالی ندارید.</p>
+                        <% } %>
+    </section>
+

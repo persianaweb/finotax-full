@@ -1,0 +1,8 @@
+<% if(massages.length> 0 ){ %>
+    <div class="alert alert-danger" role="alert"
+        style="text-align: right; font-size: 14px;">
+        <% massages.forEach(err=> { %>
+            <%- err %> </br>
+                <% }) %>
+    </div>
+    <% } %>

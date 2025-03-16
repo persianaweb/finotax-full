@@ -1,0 +1,44 @@
+<section class="main flex-column">
+    <div id="register" class="auth" style="width: 80%; background-color: white; border-radius: 8px;">
+        <img src="./../images/auth.png" style="width: 140px; height: auto;" alt="">
+        <h2>ورود | ثبت نام</h2>
+        <form action="/auth/register" method="post" class="flex-column">
+            <input type="text" name="mobileNumber" placeholder="لطفا شماره موبایل خود را وارد کنید">
+            <button type="submit">ارسال کد تایید</button>
+        </form>
+    </div>
+    <div id="login" class="auth hidden" style="width: 80%; background-color: white; border-radius: 8px;">
+        <h2>ثبت کد تایید</h2>
+        <form action="/auth/login" method="post" class="flex-column">
+            <input type="text" name="Vcode" maxlength="4" placeholder="لطفا کد تایید ارسال شده را وارد کنید">
+            <button type="submit">تایید و ورود</button>
+        </form>
+    </div>
+</section>
+
+<% if(massages.length> 0 ){ %>
+    <div class="alert show" id="alert">
+        <img src="./images/alert.png" alt="alert">
+        <h6>
+            <% massages.forEach(err=> { %>
+                <%- err %> </br>
+                    <% }) %>
+        </h6>
+        <div class="flex-row">
+            <a href="#" class="close">متوجه شدم</a>
+        </div>
+    </div>
+    <% } %>
+
+        <script>
+            if (<%= rCode %>) {
+                document.addEventListener("DOMContentLoaded", function () {
+                    var rcode = document.querySelector("#register");
+                    var mobile = document.querySelector("#login");
+                    
+                    rcode.classList.add('hidden');
+                    mobile.classList.remove('hidden');
+                });
+
+            }
+        </script>

@@ -1,0 +1,21 @@
+
+
+
+
+<section class="main flex-column">
+    <h2>انتخاب اشتراک</h2>
+    <form action="/user/subscribe" method="POST">
+        <label>نوع اشتراک:</label>
+        <div>
+            <% subscribes.forEach(subscription => { %>
+                <label>
+                    <input type="radio" name="subscription" value="<%= subscription._id %>" required>
+                    <%= subscription.name %> - <%= subscription.duration %> ماهه - قیمت: <%= subscription.price %> تومان
+                </label>
+                <br>
+            <% }); %>
+        </div>
+
+        <button type="submit">پرداخت</button>
+    </form>
+</section>

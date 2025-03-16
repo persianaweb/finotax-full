@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="/admin/css/add-product.css">
+<link rel="stylesheet" href="/admin/css/component-chosen.min.css">
+
+<div class="content-main">
+
+    <div class=" m-4  p-2 main-content">
+
+        <h2>ویرایش اشتراک </h2>
+        <form action="/admin/subscription/edit/<%- subscriptions._id %>" method="POST">
+            <label for="name">نام اشتراک:</label>
+            <input type="text" id="name" name="name" value="<%- subscriptions.name %>" required>
+    
+            <label for="duration">مدت‌زمان (ماه):</label>
+            <input type="number" id="duration" name="duration" value="<%- subscriptions.duration %>" required>
+    
+            <label for="price">قیمت (تومان):</label>
+            <input type="number" id="price" name="price" value="<%- subscriptions.price %>"  required>
+    
+            <button type="submit">ویرایش اشتراک</button>
+        </form>
+
+    </div>
+</div>
+
+

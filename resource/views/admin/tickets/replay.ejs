@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="/admin/css/add-product.css">
+<link rel="stylesheet" href="/css/profile.css">
+
+<div class="content-main">
+    <div class=" m-4  p-2 main-content">
+        <div class="d-flex justify-content-center p-2 title">تیکت کاربر</div>
+        <div class="d-flex justify-content-around align-items-center w-100 mt-2">
+            <div>
+                <span>نام کاربر : </span>
+                <span><%- ticket.user.name %></span>
+            </div>
+            <div>
+                <span>شماره کاربر : </span>
+                <span><%- ticket.user.mobileNumber %></span>
+            </div>
+            <div>
+                <span>شماره تیکت : </span>
+                <span><%- ticket.code %></span>
+            </div>
+            <div>
+                <span>موضوع تیکت : </span>
+                <span><%- ticket.title %></span>
+                <input type="hidden" name="<%- ticket.constructor.modelName.toLowerCase() %>" value=" <%- ticket.id %>">
+            </div>
+        </div>
+     <div class="mt-2 container">
+        <div class="d-flex flex-column fadeing w-100 justify-content-end align-items-center p-1">
+            <div class="clint-chat">
+                <%- ticket.text %>
+            </div>
+        </div>
+        <% parent.forEach(par=> { %>
+            <% if(par.code==='0' ){ %>
+                <div class="d-flex flex-column fadeing w-100 justify-content-end align-items-center ">
+                    <div class="admin-chat">
+                        <span><%- par.title %> : </span>
+                        <%- par.text %>
+                    </div>
+                </div>
+                <% } %>
+                    <% if(par.code==='1' ){ %>
+                        <div class="d-flex flex-column fadeing w-100 justify-content-end align-items-center ">
+                            <div class="clint-chat">
+                                <%- par.text %>
+                            </div>
+                        </div>
+                        <% } %>
+                            <% }) %>
+     </div>
+                                <form class="container d-flex justify-content-center align-items-center w-100 send-box mt-2"
+                                    action="/admin/tickets/replay/send" method="POST" novalidate>
+                                    <input type="hidden" name="parent" value="<%- ticket.code %>">
+                                    <input type="hidden" name="codeNumber" value="<%- ticket.code %>">
+                                    <input type="hidden" name="mobileNumber" value="<%- ticket.user.mobileNumber %>">
+                                    <input type="hidden" name="<%- ticket.constructor.modelName.toLowerCase() %>"
+                                        value=" <%- ticket.id %>">
+                                    <input type="text" placeholder="... پاسخ خود را بنویسید" name="text">
+                                    <button class="btn" type="submit">
+                                        <i class="fas fa-location-arrow"></i>
+                                    </button>
+                                </form>
+    </div>
+</div>

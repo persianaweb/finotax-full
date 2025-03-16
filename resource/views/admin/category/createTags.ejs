@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/admin/css/add-product.css">
+
+<div class="content-main">
+    <div class=" m-4  p-2 main-content">
+        <div class="d-flex justify-content-center p-2 title">افزودن دسته بندی</div>
+        <form class="container" action="/admin/categorys/createTags" method="POST"  novalidate>
+            <div class="p-2 inf">
+                <div class="d-flex justify-content-around align-items-center my-auto p-2 field">
+                    <div class="col-6 field-col">
+                        <label for="name" class="d-block">عنوان دسته بندی :</label>
+                        <input class="w-75 inputs" name="name" type="text"
+                            placeholder="نام تگ را وارد کنید">
+                    </div>
+                    <div class="col-6 field-col">
+                        <label for="parent" class="d-block">جایگاه دسته بندی :</label>
+                        <select name="parent" id="category" class="w-75">
+                            <option value="none" selected>دسته اصلی</option>
+                            <% categorys.forEach(category =>{ %> 
+                            <option value="<%- category.id %>"><%- category.name %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-start p-2">
+                    <button class="btn submit-btn" type="submit">ذخیره</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

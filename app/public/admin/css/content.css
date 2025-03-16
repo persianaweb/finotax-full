@@ -1,0 +1,333 @@
+a {
+    color: unset;
+}
+
+.custom-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.custom-table td {
+    padding: 5px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.custom-table tr:nth-child(odd) {
+    background-color: #ecf0fa;
+}
+
+.custom-table tr:hover {
+    color: white;
+    background-color: #5b6e88;
+}
+
+.custom-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: white;
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+    text-align: center;
+}
+
+
+.img-custom {
+    width: 50px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.main-content {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.paginate {
+    list-style: none;
+}
+
+.pag {
+    font-size: 13px;
+    font-weight: 500;
+    color: #5b6e88;
+    border: 1px solid #ddd;
+    background-color: #ecf0fa;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+}
+
+.pag:hover {
+    color: white;
+    background-image: linear-gradient(45deg, #00b9ff, #0abeff);
+    ;
+}
+
+.p-link {
+    padding-left: 4px;
+}
+
+.pencil {
+    font-size: 13px;
+    color: white;
+    background-image: linear-gradient(45deg, #0162e8, #0f69e7);
+    ;
+}
+
+.trash {
+    font-size: 13px;
+    color: white;
+    background-image: linear-gradient(45deg, #00b9ff, #0abeff);
+    ;
+}
+
+.trash:hover,
+.pencil:hover {
+    background-image: none;
+    background-color: white;
+    color: #0162e8;
+}
+
+.content-header {
+    border-bottom: #ddd 1px solid;
+}
+
+.content-header p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #5b6e88;
+}
+
+.btn-add {
+    font-size: 14px;
+    font-weight: 400;
+    background-image: linear-gradient(45deg, #17d637, #24d442);
+    color: white;
+    padding: 5px 7px 5px 7px;
+    margin-left: 40px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.btn-add:hover {
+    background-image: none;
+    background-color: white;
+    color: #17d637;
+}
+
+.container-btn-add {
+    margin-right: auto;
+}
+
+.fa-plus {
+    padding-left: 5px;
+}
+
+.cards1 {
+    border-radius: 4px;
+    background-image: url("./../images/wave\ \(11\).svg"), linear-gradient(35deg, #0867e9, #7baef3);
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    width: 23%;
+    transition: all 200ms ease-in;
+}
+
+.cards2 {
+    border-radius: 4px;
+    background-image: url("./../images/wave\ \(12\).svg"), linear-gradient(35deg, #f94261, #f77489);
+    background-repeat: no-repeat;
+    background-position-y: 125%;
+    width: 23%;
+    transition: all 200ms ease-in;
+}
+
+.cards3 {
+    border-radius: 4px;
+    background-image: url("./../images/wave\ \(13\).svg"), linear-gradient(35deg, #099c6c, #44d3a5);
+    background-repeat: no-repeat;
+    background-position-y: 125%;
+    width: 23%;
+    transition: all 200ms ease-in;
+}
+
+.cards4 {
+    border-radius: 4px;
+    background-image: url("./../images/wave\ \(14\).svg"), linear-gradient(35deg, #f67032, #efa45d);
+    background-repeat: no-repeat;
+    background-position-y: 125%;
+    width: 23%;
+    transition: all 200ms ease-in;
+}
+
+.cards1:hover,
+.cards2:hover,
+.cards3:hover,
+.cards4:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.title {
+    font-weight: 300;
+}
+.color-box{
+    color: white;
+    width: 10px;
+    height: 10px;
+    padding: 2px 4px 2px 4px;
+    border-radius: 4px;
+}
+@media(max-width: 1200px) {}
+
+@media(max-width: 992px) {
+    .card-box{
+        display: flex;
+       flex-wrap: wrap;
+       justify-content: center !important;
+    }
+    .cards1 {
+        width: 35%;
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+    .cards2 {
+        width: 35%;
+        margin-bottom: 10px;
+    }
+    .cards3 {
+        width: 35%;
+        margin-left: 10px;
+    }
+    .cards4 {
+        width: 35%;
+    }
+    .content-box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .my-tabel{
+        width: 70% !important;
+    }
+}
+
+@media(max-width: 768px) {
+    .card-box{
+        display: flex;
+       flex-wrap: wrap;
+       justify-content: center !important;
+    }
+    .cards1 {
+        width: 40%;
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+    .cards2 {
+        width: 40%;
+        margin-bottom: 10px;
+    }
+    .cards3 {
+        width: 40%;
+        margin-left: 10px;
+    }
+    .cards4 {
+        width: 40%;
+    }
+    .content-box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .my-tabel{
+        width: 90% !important;
+    }
+}
+
+@media(max-width: 576px) {
+   .content-header{
+    width: 550px;
+   }
+    .custom-table {
+        border-collapse: collapse;
+        width: 700px;
+    }
+    .card-box{
+        display: flex;
+       flex-wrap: wrap;
+       margin-left: auto !important;
+       margin-right: auto !important;
+       align-self: safe;
+       width: 90%;
+    }
+    .cards1 {
+        width: 100%;
+        margin-left: 0px;
+    }
+    .cards2 {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .cards3 {
+        width: 100%;
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+    .cards4 {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .content-box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .my-tabel{
+        width: auto !important;
+    }
+}
+
+@media(max-width: 375px) {
+    .custom-table {
+        border-collapse: collapse;
+        width: 550px;
+    }
+    .card-box{
+        display: flex;
+       flex-wrap: wrap;
+       margin-left: auto !important;
+       margin-right: auto !important;
+       align-self: safe;
+       width: 90%;
+    }
+    .cards1 {
+        width: 100%;
+        margin-left: 0px;
+    }
+    .cards2 {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .cards3 {
+        width: 100%;
+        margin-top: 10px;
+        margin-left: 0px;
+    }
+    .cards4 {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .content-box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .my-tabel{
+        width: auto !important;
+    }
+}

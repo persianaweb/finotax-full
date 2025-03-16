@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="/admin/css/content.css">
+
+<div class="content-main">
+    <div class="m-4 p-3 main-content table-responsive">
+        <div class="d-flex align-items-center justify-content-start my-auto content-header">
+            <div>
+                <h6>مدیریت ویدیوها</h6>
+                <p>در اینجا می‌توانید ویدیوهای آپلود شده را مشاهده و مدیریت کنید.</p>
+            </div>
+            <div class="container-btn-add">
+                <a href="/admin/uploadVideo" class="btn-add my-auto" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-custom-class="custom-tooltip" data-bs-title="افزودن ویدیو جدید">
+                    <i class="fas fa-plus m-auto"></i>افزودن ویدیو
+                </a>
+            </div>
+        </div>
+
+        <table class="custom-table container">
+            <thead>
+                <tr>
+                    <th>عنوان ویدیو</th>
+                    <th>تنظیمات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% videos.docs.forEach(video => { %>
+                <tr>
+                    <td><%= video.articleId ? video.articleId.title : 'بدون مقاله' %></td>
+                    <td class="d-flex justify-content-center">
+                        <form action="/admin/videos/<%- video._id %>/delete" method="POST">
+                            <button type="submit" class="btn trash" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                data-bs-custom-class="custom-tooltip" data-bs-title="حذف "><i
+                                    class="far fa-trash-alt"></i></button>
+                            </form>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="d-flex p-3 justify-content-center">
+            <nav>
+                <% if(videos.pages > 0) { %> 
+                <ul class="d-flex paginate">
+                    <% if (videos.page == 1) { %>
+                        <a class="p-link"><li class="pag">قبلی</li></a>
+                    <% } else { %>
+                        <a class="p-link" href="/admin/videos/?page=<%= videos.page - 1 %>">
+                            <li class="pag">قبلی</li>
+                        </a>
+                    <% } %>
+
+                    <% var i = ((videos.page) > 5 ? (videos.page) - 4 : 1) %>
+                    <% if (i !== 1) { %>
+                        <a class="p-link"><li class="pag">...</li></a>
+                    <% } %>
+
+                    <% for (; i <= ((videos.page) + 4) && i <= videos.pages; i++) { %>
+                        <% if (i == videos.page) { %>
+                            <a class="p-link active"><li class="pag"><%= i %></li></a>
+                        <% } else { %>
+                            <a class="p-link" href="/admin/videos/?page=<%= i %>">
+                                <li class="pag"><%= i %></li>
+                            </a>
+                        <% } %>
+                    <% } %>
+
+                    <% if (videos.page == videos.pages) { %>
+                        <a class="p-link"><li class="pag">بعدی</li></a>
+                    <% } else { %>
+                        <a class="p-link" href="/admin/videos/?page=<%= videos.page + 1 %>">
+                            <li class="pag">بعدی</li>
+                        </a>
+                    <% } %>
+                </ul>
+                <% } %>
+            </nav>
+        </div>
+    </div>
+</div>
