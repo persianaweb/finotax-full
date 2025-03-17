@@ -2,6 +2,6 @@
 const session = require('./session');
 
 module.exports = {
-    // layout, session,
+    layout, session,
     debug: false 
 }

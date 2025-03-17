@@ -1,4 +1,5 @@
 const middleware = require('app/http/middlleware/middleware');
+const configs =require('./../../../configs/index');
 class checkError extends middleware {
 
     async get404(req, res, next) {
