@@ -3,12 +3,12 @@ const Schema = mongoose.Schema;
 const mongoosePaginate = require('mongoose-paginate');
 
 const User = mongoose.Schema({
-    admin: { type: Boolean, default: true },
+    admin: { type: Boolean, default: false },
     mobileNumber: { type: String, require: true },
     random: { type: String, require: true },
-    image: { type: String, default:'' },
-    name: { type: String, default:'' },
-    email: { type: String, default:'' },
+    image: { type: String, default: '' },
+    name: { type: String, default: '' },
+    email: { type: String, default: '' },
     roles: [{ type: Schema.Types.ObjectId, ref: 'Role' }],
 
     // اضافه کردن اشتراک
