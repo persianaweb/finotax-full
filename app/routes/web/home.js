@@ -10,6 +10,7 @@ const SubscriptionController = require('app/http/controllers/SubscriptionControl
 
 //middlleware
 const userRedirect = require('app/http/middlleware/UserRedirect');
+const noUserRedirect = require('app/http/middlleware/UserRedirectSub');
 
 
 //homeRoutes
@@ -64,7 +65,7 @@ router.get('/fin3', homeController.fin3);
 // router.get('/acc1test', homeController.acctest1);
 
 // subscribes
-router.get('/user/subscribe', SubscriptionController.subscribe);
+router.get('/user/subscribe',noUserRedirect.handle , SubscriptionController.subscribe);
 router.get('/user/subscriptionStatus', SubscriptionController.subscriptionStatus);
 router.post('/user/subscribe', SubscriptionController.subscribeSale);
 
