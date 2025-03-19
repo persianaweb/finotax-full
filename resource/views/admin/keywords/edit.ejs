@@ -1,0 +1,29 @@
+
+
+<link rel="stylesheet" href="/admin/css/add-product.css">
+
+<div class="content-main">
+    <div class=" m-4  p-2 main-content">
+        <div class="d-flex justify-content-center p-2 title">ویرایش کلمات تخصصی</div>
+        <form class="container" action="/admin/keywords/edit/<%- keywords.id %>" method="POST"  novalidate>
+            <div class="p-2 inf">
+                <div class="d-flex justify-content-around align-items-center my-auto p-2 field">
+                    <div class="col-6 field-col">
+                        <label for="name" class="d-block">عنوان کلمه تخصصی :</label>
+                        <input class="w-75 inputs" name="name" type="text"
+                            placeholder=" کلمه را وارد کنید" value="<%- keywords.name %>">
+                    </div>
+
+                    <div class="col-6 field-col">
+                        <label for="meaning" class="d-block">معنی</label>
+                        <input class="w-75 inputs" name="meaning" type="text"
+                            placeholder="معنای کلمه را وارد کنید" value="<%- keywords.meaning %>">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-start p-2">
+                    <button class="btn submit-btn" type="submit">ویرایش</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

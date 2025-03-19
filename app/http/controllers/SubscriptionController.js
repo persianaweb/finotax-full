@@ -19,7 +19,7 @@ class SubscriptionModule {
 
     }
 
-    async subscriptionStatus(req, res) {
+    async subscriptionStatus(req, res) { 
         try {
             const user = await User.findById(req.session.userId).populate('subscription');
 

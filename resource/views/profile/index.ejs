@@ -1,16 +1,108 @@
+<link rel="stylesheet" href="/css/new-style.css">
 
-
-<section class="main flex-column">
-    <div class="profile flex-column" style="background-color: white; width: 90%; border-radius: 8px; margin-top: 0px;">
-        <div class="profile-name">
-            <img class="profile-img" src="./images/ali.jpg" alt="profile-image">
-            <h2>علی خوش طینت</h2>
-            <h3>09372290421</h3>
-        </div>
-        <img class="wave" src="./images/wave.svg" alt="">
-        <a class="pro-btn" href="/mytickets"><img src="./images/ticket.svg" alt="">تیکت پشتیبانی</a>
-        <a class="pro-btn" href="#"><img src="./images/profile.svg" alt="">جزییات پروفایل</a>
-        <a class="pro-btn" href="#"><img src="./images/setting.svg" alt="">تنظیمات پروفایل</a>
-        <a class="pro-btn" href="/auth/logout" style="color: red !important;"><img src="./images/exit.svg" alt="">خروج</a>
+<section class="main">
+    <div class="section1">
+        <a href="/profile/edit-profile/<%- users.id %>"><img src="/images/setting2.svg" alt="setting"></a>
+        <h1>پنل کاربری</h1>
+        <a href="/auth/logout"><img src="/images/in.svg" alt="Loguot"></a>
     </div>
+    <div class="profile-section">
+        <% if(users.image){ %>
+            <img src="<%- users.image %>" alt="user image">
+            <% }else{ %>
+                <img src="/images/No_Image_Available.jpg" alt="user image">
+                <% } %>
+                    <div>
+                        <% if(users.image){ %>
+                            <div class="userName"><%- users.name %></div>
+                            <% }else{ %>
+                                <div class="userName">کاربر میهمان</div>
+                                <% } %>
+                                    <span><%- users.mobileNumber %></span>
+                    </div>
+    </div>
+    <% if (user && subscription) { %>
+        <div class="subscribe">
+            <div class="sub-title">
+                وضعیت اشتراک ها
+            </div>
+
+            <div class="status" style="color: #00E573;">
+                <%= subscription.name %>
+            </div>
+            <div class="history">
+                <% if (remainingDays===0) { %>
+                    <p style="color: red;">اشتراک شما به پایان رسیده است. لطفاً تمدید کنید.</p>
+                    <% }else{ %>
+                        <div>
+                            اتمام اشتراک :
+                            <%= new Date(user.subscriptionEndDate).toLocaleDateString('fa-IR') %>
+                        </div>
+                        <% } %>
+                            <div>
+                                <%= remainingDays %> روز
+                                    باقی مانده
+                            </div>
+            </div>
+        </div>
+        <% } else { %>
+            <div class="subscribe">
+                <div class="sub-title">
+                    وضعیت اشتراک ها
+                </div>
+
+                <div class="status" style="color: red;">
+                    شما هیچ اشتراک فعالی ندارید.
+                </div>
+                <div class="history">
+                    <div>
+                        ----
+                    </div>
+                    <div>
+                        ----
+                    </div>
+                </div>
+            </div>
+            <% } %>
+
+                <a href="/mytickets-send" class="profile-btn">
+                    <span>ثبت تیکت جدید</span>
+                    <img src="/images/plus.svg" alt="">
+                </a>
+
+                <a href="/mytickets" class="profile-btn">
+                    <span>مشاهده تیکت ها</span>
+                    <img class="arr" src="/images/arr.svg" alt="">
+                </a>
+
+                <section class="point-section">
+                    <% if (userAnswers && userAnswers.length> 0) { %>
+                        <% userAnswers.forEach(answer=> { %>
+                            <% if (answer.score< 100) { %>
+                                <a href="/article/<%= answer.articleSlug %>" class="point-course-red">
+                                    <div>
+                                        100/<%= answer.score %>
+                                    </div>
+                                    <h6>
+                                        <%= answer.articleTitle %>
+                                    </h6>
+                                </a>
+                            <% }else{%>
+                                <a href="/article/<%= answer.articleSlug %>" class="point-course">
+                                    <div>
+                                        100/<%= answer.score %>
+                                    </div>
+                                    <h6>
+                                        <%= answer.articleTitle %>
+                                    </h6>
+                                </a>
+                                <% } %>
+                            <% }) %>
+                                <% }else{%>
+                                    در حال حاظر در آزمونی شرکت نکرده اید
+                                    <% }%>
+
+
+                </section>
+
 </section>

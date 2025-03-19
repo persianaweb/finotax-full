@@ -21,12 +21,30 @@ const articleValidator = require('app/http/validators/articleValidator');
 
 //Controllers
 const adminController = require('app/http/controllers/admin/adminController');
+const userController = require('app/http/controllers/userController');
 const categoryController = require('app/http/controllers/categoryController');
+const keywordsController = require('app/http/controllers/keywordsController'); 
 const articleController = require('app/http/controllers/articleController');
 const QuestionController = require('app/http/controllers/admin/QuestionController');
 const SubscriptionController = require('app/http/controllers/SubscriptionController');
 //AdminRoutes
 router.get('/', adminController.index);
+
+//User Routes
+router.get('/users', userController.usersView);
+//Add User Roles
+router.get('/users/:id/userRoles', userController.userRoles);
+router.post('/users/:id/addUserRoles', userController.addUserRoles);
+//Set Admin User
+router.get('/users/:id/adminAccess', userController.adminAccess);
+//Save User
+router.get('/users/create', userController.SaveUsersView);
+router.post('/users/create/add', upload.single('image'), fileToField.handle, userController.store);
+//Delete User
+router.post('/users/:id', userController.destroy);
+//Edit User
+router.get('/users/:id/edit', userController.updateAllUsers);
+router.post('/users/edit/:id', upload.single('image'), fileToField.handle, userController.updateProcessId);
 
 //Categorys Routes
 router.get('/categorys', categoryController.index);
@@ -39,6 +57,18 @@ router.post('/categorys/:id/article', categoryController.destroyArticle);
 //Edit Category
 router.get('/categorys/:id/editArticle', categoryController.editArticle);
 router.post('/categorys/editArticle/:id', categoryController.updateArticle);
+
+//keywords Routes
+router.get('/keywords', keywordsController.index);
+//Create keywords
+router.get('/keywords/create', keywordsController.create);
+router.post('/keywords/create', keywordsController.store);
+//Delete keywords
+
+router.post('/keywords/:id/article', keywordsController.destroy);
+//Edit keywords
+router.get('/keywords/:id/edit', keywordsController.edit);
+router.post('/keywords/edit/:id', keywordsController.update);
 
 //Articles Routes
 router.get('/articles', articleController.index);
@@ -81,6 +111,5 @@ router.post('/subscription/:id/subscription', SubscriptionController.destroy);
 //Edit Category
 router.get('/subscription/:id/edit', SubscriptionController.edit);
 router.post('/subscription/edit/:id', SubscriptionController.update);
-
 
 module.exports = router;

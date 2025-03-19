@@ -1,14 +1,17 @@
 
+<link rel="stylesheet" href="/css/new-style.css">
 
 
-
-<section class="main flex-column">
-    <h2>انتخاب اشتراک</h2>
-    <form action="/user/subscribe" method="POST">
-        <label>نوع اشتراک:</label>
+<section class="main">
+    <div class="section1">
+        <a href="/profile/edit-profile/<%- users.id %>"><img src="/images/setting2.svg" alt="setting"></a>
+        <h1>انتخاب اشتراک</h1>
+        <a href="/auth/logout"><img src="/images/in.svg" alt="Loguot"></a>
+    </div>
+    <form action="/user/subscribe" method="POST" class="pay-form">
         <div>
             <% subscribes.forEach(subscription => { %>
-                <label>
+                <label class="profile-btn" style="width: 100% !important;">
                     <input type="radio" name="subscription" value="<%= subscription._id %>" required>
                     <%= subscription.name %> - <%= subscription.duration %> ماهه - قیمت: <%= subscription.price %> تومان
                 </label>
@@ -16,6 +19,6 @@
             <% }); %>
         </div>
 
-        <button type="submit">پرداخت</button>
+        <button class="pay-btn" type="submit">پرداخت</button>
     </form>
 </section>

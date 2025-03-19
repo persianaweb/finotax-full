@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="/admin/css/add-product.css">
+<link rel="stylesheet" href="/admin/css/add-product.css">
+<link rel="stylesheet" href="/admin/css/component-chosen.min.css">
+
+<div class="content-main">
+    <div class=" m-4  p-2 main-content">
+        <div class="d-flex justify-content-center p-2 title">افزودن سطح دسترسی</div>
+        <form class="container" action="/admin/users/<%- user._id %>/addUserRoles" method="POST" novalidate>
+            <div class="p-2 inf">
+                <div class="d-flex justify-content-around align-items-center my-auto p-2 field">
+                    <div class="col-6 field-col">
+                        <label for="name" class="d-block">نام کاربر :</label>
+                        <input class="w-75 inputs" name="name" type="text" placeholder="نام دسترسی را وارد کنید" value="<%- user.name %>" readonly>
+                    </div>
+                    <div class="col-6 field-col">
+                        <label for="label" class="d-block">موبایل کاربر :</label>
+                        <input class="w-75 inputs" name="label" type="text" placeholder="توضیحات دسترسی را وارد کنید" value="<%- user.mobileNumber %>" readonly>
+                    </div>
+                </div>
+                <div class="col-6 field-col m-auto">
+                    <label for="roles" class="control-label font-weight-bold font-weight-bold">سطح دسترسی</label>
+                    <select name="roles" id="roles" class="form-control form-control-chosen p-1"
+                        data-placeholder="سطح دسترسی را انتخاب کنید" multiple>
+                        <% roles.forEach(role => { %>
+                        <option value="<%- role.id %>"
+                            <%= user.roles.indexOf(role.id) !== -1 ? 'selected' : '' %>>
+                            <%- role.name %>
+                        </option>
+                        <% }) %>
+                    </select>
+                </div>
+                <div class="d-flex justify-content-start p-2">
+                    <button class="btn submit-btn" type="submit">ذخیره</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.6/chosen.jquery.min.js"></script>
+<script src="/admin/js/chosen.js"></script>

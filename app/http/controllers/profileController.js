@@ -3,15 +3,56 @@ const Tickets = require('app/models/tickets');
 // const Comment = require('app/models/comment');
 const autoBind = require('auto-bind');
 const axios = require('axios');
+const Subscription = require('app/models/Subscription');
+const Answer = require('app/models/QuizResult');
+const Article = require('app/models/articles')
+const moment = require('moment-jalaali');
 const fs = require('fs');
 
 class profileController {
     constructor() {
         autoBind(this);
     }
-    index(req, res) {
-        const title = 'حساب کاربری';
-        res.render('profile/index', { title });
+
+    async index(req, res) {
+        try {
+            const user = await User.findById(req.session.userId).populate('subscription');
+
+            if (!user || !user.subscription) {
+                return res.render('profile/index', { user: null });
+            }
+
+            // دریافت پاسخ‌های کاربر
+            const answers = await Answer.find({ user: user._id })
+                .populate('article', 'title slug') // فقط عنوان مقاله را دریافت می‌کنیم
+                .exec();
+
+            // ساخت آرایه‌ای از اطلاعات مورد نیاز
+            const userAnswers = answers.map(answer => ({ 
+                articleTitle: answer.article.title,
+                articleSlug: answer.article.slug,
+                articleId: answer.article._id,
+                score: answer.score,
+                correctAnswers: answer.correctAnswers,
+                totalQuestions: answer.totalQuestions,
+                createdAt: answer.createdAt  
+            }));
+
+            const remainingDays = moment(user.subscriptionEndDate).diff(moment(), 'days');   
+
+            // return res.json(userAnswers );
+
+            res.render('profile/index', {
+                user,
+                subscription: user.subscription,
+                remainingDays: remainingDays > 0 ? remainingDays : 0 ,
+                 userAnswers 
+            });
+
+        } catch (err) {
+            console.error(err);
+            res.status(500).send("خطایی رخ داده است."); 
+        }
     }
 
 
@@ -120,13 +161,10 @@ class profileController {
         return res.redirect(req.header('Referer') || '/');
     }
     editProfile(req, res) {
-        const title = 'webinja | پروفایل من';
-        let mobile = req.session.mobile || false;
-        let rCode = req.session.rCode || false;
-        req.session.mobile = false;
-        req.session.rCode = false;
-        res.render('profile/editProfile', { title, mobile, rCode });
+        const title = 'پروفایل من';
+        res.render('profile/editProfile', { title });
     }
+
     async updateProcess(req, res, next) {
         try {
             const user = await User.findById(req.session.userId);

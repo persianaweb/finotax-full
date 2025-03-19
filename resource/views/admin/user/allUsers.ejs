@@ -1,0 +1,112 @@
+<link rel="stylesheet" href="/admin/css/content.css">
+
+<div class="content-main">
+    <div class=" m-4  p-3 main-content table-responsive">
+        <div class="d-flex align-items-center justify-content-start my-auto content-header">
+            <div>
+                <h6>همه کاربران</h6>
+                <p>در اینجا می توانید کاربران خود را مدیریت کنید.</p>
+            </div>
+            <div class="container-btn-add">
+                <a href="/admin/users/create" class="btn-add my-auto" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-custom-class="custom-tooltip" data-bs-title="افزودن کاربر جدید"><i
+                        class="fas fa-plus m-auto"></i>افزودن کاربر</a>
+            </div>
+        </div>
+        <table class="custom-table container">
+            <thead>
+                <tr>
+                    <th>نام کاربر</th>
+                    <th>موبایل کاربر</th>
+                    <th>تنظیمات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.docs.forEach(user=>{ %> 
+                <tr>
+                    <% if(user.name){ %> 
+                    <td><%- user.name %></td>
+                    <% }else{ %>
+                        <td>فاقد نام</td>
+                        <% } %>
+                    <td><%- user.mobileNumber %></td>
+        
+                    <td>
+                        <form action="/admin/users/<%- user._id %>" method="POST">
+                            <a href="/admin/users/<%- user._id %>/adminAccess">
+                        <button type="button" class="btn pencil" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-custom-class="custom-tooltip" data-bs-title="نقش کاربر" style="font-size: 9px;"><%- user.admin ? 'لغو مدیریت' : 'مدیر' %></button>
+                            </a>
+                     
+                                <a href="/admin/users/<%- user._id %>/edit">
+                        <button type="button" class="btn pencil" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-custom-class="custom-tooltip" data-bs-title="ویرایش"><i
+                                class="fas fa-pencil-alt"></i></button>
+                            </a>
+                        <button type="submit" class="btn trash" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-custom-class="custom-tooltip" data-bs-title="حذف "><i
+                                class="far fa-trash-alt"></i></button>
+                            </form>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <div class="d-flex p-3 justify-content-center">
+            <nav>
+                <% if(users.pages>0){ %>
+                    <ul class="d-flex paginate">
+                        <% if (users.page==1) { %>
+                            <a class="p-link ">
+                                <li class="pag">قبلی</li>
+                            </a>
+                            <% } else { %>
+                                <a class="p-link " href="/admin/users/?page=<%= 1 %>">
+                                    <li class="pag">قبلی</li>
+                                </a>
+                                <% } %>
+                                    <% var i=((users.page)> 5 ? (users.page) - 4 : 1) %>
+                                        <% if (i !==1) { %>
+                                            <a class="p-link">
+                                                <li class="pag">...</li>
+                                            </a>
+                                            <% } %>
+                                                <% for (; i <=((users.page) + 4) && i <=users.pages; i++) {
+                                                    %>
+                                                    <% if (i==users.page) { %>
+                                                        <a class="p-link" href="<%= i %>">
+                                                            <li class="pag">
+                                                                <%= i %>
+                                                            </li>
+                                                        </a>
+                                                        <% } else { %>
+                                                            <a class="p-link" href="/admin/users/?page=<%= i %>">
+                                                                <li class="pag">
+                                                                    <%= i %>
+                                                                </li>
+                                                            </a>
+                                                            <% } %>
+                                                                <% if (i==(users.page) + 4 && i <
+                                                                    users.pages) { %>
+                                                                    <a class="p-link">
+                                                                        <li class="pag">...</li>
+                                                                    </a>
+                                                                    <% } %>
+                                                                        <% } %>
+                                                                            <% if (users.page==users.pages)
+                                                                                { %>
+                                                                                <a class="p-link">
+                                                                                    <li class="pag">بعدی</li>
+                                                                                </a>
+                                                                                <% } else { %>
+                                                                                    <a class="p-link"
+                                                                                        href="/admin/role/?page=<%= users.pages %>">
+                                                                                        <li class="pag">بعدی</li>
+                                                                                    </a>
+                                                                                    <% } %>
+                    </ul>
+                    <% } %>
+            </nav>
+        </div>
+    </div>
+</div>

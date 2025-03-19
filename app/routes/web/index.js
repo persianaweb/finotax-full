@@ -18,6 +18,6 @@ router.use('/admin', adminRedirect.handle , adminRoutes);
 
 // Error Routes
 router.all('*', checkError.get404); 
-router.use(checkError.handle);
+router.use(checkError.handle); 
 
 module.exports = router;

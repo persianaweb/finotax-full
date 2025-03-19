@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="/css/profile.css">
+
+<div class="container main-section d-flex flex-row-reverse main">
+    <div class="section1 d-flex flex-column align-items-center">
+    
+    </div>
+    <div class="d-flex flex-column section2 p-3">
+        <div class="w-100 title-section">
+            <span>تنظیمات پروفایل</span>
+        </div>
+        <div class="d-flex flex-row-reverse justify-content-between align-items-center m-auto fadeing form-section">
+            <% if(users.image){ %>
+                <div class="edit-profile-img">
+                    <img class="img-fluid" src="<%- users.image %>" alt="<%- users.name %>">
+                </div>
+                <% }else{ %>
+                    <div class="edit-profile-img">
+                        <img class="img-fluid" src="/admin/images/userIcon.jpg" alt="UserImage">
+                    </div>
+                    <% } %>
+                        <form action="/profile/edit-profile" method="post"
+                            class="d-flex flex-column justify-content-between form-user" enctype="multipart/form-data"
+                            novalidate>
+                            <span>: نام کاربری</span>
+                            <input type="text" name="name" placeholder="نام خود را وارد کنید" value="<%- users.name %>">
+                            <span>: ایمیل</span>
+                            <input type="email" name="email" placeholder="ایمیل را وارد کنید"
+                                value="<%- users.email %>">
+                            <span>: شماره تلفن</span>
+                            <input type="text" name="mobileNumber" placeholder="شماره موبایل را وارد کنید"
+                                value="<%- users.mobileNumber %>">
+                            <span>: عکس پروفایل</span>
+                            <input type="file" name="image" id="imageInput">
+                            <button class="btn buttonformsabt" type="submit">ذخیره</button>
+                        </form>
+        </div>
+    </div>
+</div>
+
+<script src="/js/toggleMenu.js"></script>

@@ -1,0 +1,184 @@
+.section1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px 0px 20px;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.section1 a img {
+    width: 100%;
+}
+
+.section1 a {
+    width: 7%;
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+    padding: 0px 20px 0px 20px;
+}
+
+.profile-section img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 24px;
+}
+
+.profile-section div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    color: white;
+}
+
+.profile-section .userName {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.profile-section div span {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.subscribe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+    border-radius: 34px;
+    width: 94%;
+    margin: 20px auto;
+    height: 250px;
+    color: white;
+    background: rgb(197, 166, 255);
+    background: linear-gradient(120deg, rgba(197, 166, 255, 1) 0%, rgba(144, 86, 255, 1) 45%, rgba(124, 59, 246, 1) 69%, rgba(150, 103, 237, 1) 100%);
+}
+
+.sub-title {
+    text-align: right;
+    width: 100%;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.status {
+    text-align: center;
+    width: 100%;
+    font-size: 28px;
+    font-weight: 400;
+    text-shadow: 4px 3px 0 #7A7A7A;
+}
+
+.history {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
+.profile-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: 24px;
+    width: 94%;
+    margin: 20px auto;
+    height: 80px;
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+    background: rgb(14, 27, 138);
+    background: linear-gradient(120deg, rgba(14, 27, 138, 1) 0%, rgba(19, 15, 77, 1) 100%);
+    border: 1px solid #1C138A;
+}
+
+.profile-btn img {
+    width: 20px;
+}
+
+.arr {
+    width: 10px !important;
+}
+
+.point-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto; 
+    overflow-y: hidden; 
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 10px 14px;
+    white-space: nowrap; 
+    text-align: center;
+}
+
+.point-course,
+.point-course-red {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 160px;
+    height: 140px;
+    border: 1px solid #33CA7F;
+    padding: 10px;
+    border-radius: 24px;
+    color: white;
+    overflow: hidden;
+    background: rgb(51, 202, 127);
+    background: linear-gradient(360deg, rgba(51, 202, 127, 1) 0%, rgba(19, 15, 77, 1) 100%);
+    flex-shrink: 0; 
+}
+
+.point-course-red {
+    border: 1px solid #D81159 !important;
+    background: rgb(216, 17, 89) !important;
+    background: linear-gradient(360deg, rgba(216, 17, 89, 1) 0%, rgba(19, 15, 77, 1) 100%) !important;
+}
+
+.point-course div,
+.point-course-red div {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.point-course h6,
+.point-course-red h6 {
+    font-size: 14px;
+    font-weight: 400;
+    width: 100%;
+    white-space: nowrap;
+}
+.pay-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pay-btn{
+    width: 94%;
+    margin: auto;
+    height: 80px;
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+    border-radius: 24px;
+    background: rgb(51, 202, 127);
+    background: linear-gradient(360deg, rgba(51, 202, 127, 1) 0%, rgba(19, 15, 77, 1) 100%);
+}
