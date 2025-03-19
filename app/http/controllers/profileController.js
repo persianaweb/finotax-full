@@ -43,10 +43,10 @@ class profileController {
             // return res.json(userAnswers );
 
             res.render('profile/index', {
-                user,
+                user,userAnswers,
                 subscription: user.subscription,
-                remainingDays: remainingDays > 0 ? remainingDays : 0 ,
-                 userAnswers 
+                remainingDays: remainingDays > 0 ? remainingDays : 0 
+                  
             });
 
         } catch (err) {

@@ -76,7 +76,7 @@
                 </a>
 
                 <section class="point-section">
-                    <% if (userAnswers && userAnswers.length> 0) { %>
+                    <% if (userAnswers && userAnswers.length> 0) { %> 
                         <% userAnswers.forEach(answer=> { %>
                             <% if (answer.score< 100) { %>
                                 <a href="/article/<%= answer.articleSlug %>" class="point-course-red">
