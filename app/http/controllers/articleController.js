@@ -90,7 +90,7 @@ class articleController {
 
     async storeProccess(req, res, next) {
         let image = this.getDirImage(`${req.file.destination}/${req.file.originalname}`);
-        let userId = req.session.userId;
+        let userId = req.session.userId; 
         let { title, editor1, categories } = req.body;
         const addArticles = await new Articles({
             user: userId,

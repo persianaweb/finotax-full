@@ -3,19 +3,18 @@
 <section class="main flex-column">
     <div class="header flex-column">
         <h1 class="intro-fade">ACCOUNTING</h1>
-        <p class="matn">سرفصل دوره مقدماتی حسابداری </p>
+        <p class="matn">مقدمه ای برحسابداری </p>
     </div>
 
     <div class="container">
-        <% articles.forEach(article=>{ %>
-            <a href="/article/<%= article.slug %>" class="flip-box">
+        <% modules.forEach(module=>{ %>
+            <a href="/modules/<%- module.slug %>" class="flip-box">
                 <div class="flip-inner">
                     <div class="flip-front">
-                        <img src="<%= article.image %>" alt="<%= article.title %>">
                        <div>
                         <img src="./images/check_5610944.png" alt="">
                         <p>
-                            <%= article.title %>
+                            <%= module.title %>
                         </p>
                        </div>
                     </div>

@@ -20,7 +20,9 @@ router.get('/', homeController.index);
 router.get('/learning', homeController.learnPage); 
 
 //Single articlePage
-router.get('/article/:slug', homeController.articlePage);  
+router.get('/article/:slug', homeController.articlePage);   
+router.get('/modules/dore', homeController.single);  
+router.get('/module/:slug', homeController.modulePage);
 router.post('/article/save-quiz-result', QuestionController.saveQuizResult); 
 
 // subscribes
