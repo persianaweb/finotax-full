@@ -170,41 +170,6 @@ class homeController {
     }
 
 
-
-    // async articlePage(req, res) {
-    //     try {
-    //         const article = await Article.findOne({ slug: req.params.slug }).populate([
-    //             {
-    //                 path: 'user',
-    //                 select: ['name', 'image']
-    //             }
-    //         ]).exec();
-
-    //         if (!article) {
-    //             return res.status(404).send('مقاله موردنظر یافت نشد.');
-    //         }
-
-    //         // افزایش تعداد بازدید
-    //         article.viewCount = article.viewCount + 1;
-    //         await article.save();
-
-    //         // دریافت سوالات مرتبط با مقاله
-    //         const questions = await Question.find({ blogId: article._id }).exec();
-    //         const videos = await Video.find({ articleId: article._id }).exec();
-
-    //         // فرمت تاریخ
-    //         let date = moment(article.createdAt).format('jD - jMMMM - jYYYY ');
-    //         let time = moment(article.createdAt).format('HH:mm');
-    //         const title = article.slug;
-
-    //         // ارسال اطلاعات به صفحه
-    //         res.render('singleArticle', { article, videos, questions, date, time, title });
-    //     } catch (error) {
-    //         console.log(error);
-    //         res.status(500).send('خطای سرور');
-    //     }
-    // }
-
     async articlePage(req, res) {
         try {
             const article = await Article.findOne({ slug: req.params.slug }).populate([
@@ -220,6 +185,7 @@ class homeController {
 
             // دریافت ماژول‌های مرتبط با مقاله
             const modules = await moduleSchema.find({ blogId: article._id }).exec();
+            const questions = await Question.find({ blogId: article._id }).exec();
 
             // فرمت تاریخ
             let date = moment(article.createdAt).format('jD - jMMMM - jYYYY ');
@@ -227,20 +193,10 @@ class homeController {
             const title = article.slug;
 
             // ارسال اطلاعات به صفحه جدید برای نمایش ماژول‌ها
-            res.render('articleModules', { article, modules, date, time, title });
+            res.render('articleModules', { article, modules, date, time, title ,questions });
         } catch (error) {
             console.log(error);
             res.status(500).send('خطای سرور');
-        }
-    }
-
-
-    async single(req, res) {
-        try {
-            const modules = await Modules.find();
-            res.render('single', { modules });
-        } catch (error) {
-            console.log(error);
         }
     }
 

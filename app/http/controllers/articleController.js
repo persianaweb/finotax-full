@@ -1,5 +1,6 @@
 const { validationResult } = require('express-validator');
 const Articles = require('app/models/articles');
+const Modules = require('app/models/module');
 const Category = require('app/models/categoryArticle');
 const User = require('app/models/users');
 const Video = require('app/models/video');
@@ -18,7 +19,8 @@ class articleController {
             const title = 'Articles';
             let page = req.query.page || 1;
             const aticles = await Articles.paginate({}, { page, limit: 5, sort: { createdAt: -1 } });
-            res.render('admin/articles/index', { title, aticles, massages: req.flash('errors') });
+            const modules = await Modules.paginate({}, { page, limit: 5, sort: { createdAt: -1 } });
+            res.render('admin/articles/index', { title, aticles, modules, massages: req.flash('errors') });
         } catch (error) {
             console.log(error)
         }
@@ -90,7 +92,7 @@ class articleController {
 
     async storeProccess(req, res, next) {
         let image = this.getDirImage(`${req.file.destination}/${req.file.originalname}`);
-        let userId = req.session.userId; 
+        let userId = req.session.userId;
         let { title, editor1, categories } = req.body;
         const addArticles = await new Articles({
             user: userId,
@@ -192,7 +194,7 @@ class articleController {
     async deleteVideo(req, res) {
         try {
             console.log('شناسه‌ی دریافتی:', req.params.id);  // بررسی شناسه دریافتی
-    
+
             // پیدا کردن ویدیو در دیتابیس
             let video = await Video.findById(req.params.id);
             if (!video) {
@@ -200,13 +202,13 @@ class articleController {
                 req.flash('errors', 'ویدیو پیدا نشد.');
                 return res.redirect('/admin/videos');
             }
-    
+
             console.log('✅ ویدیو پیدا شد:', video);
-    
+
             // مسیر فایل ویدیو را تعیین می‌کنیم
             const videoPath = path.join(__dirname, '..', 'public', decodeURIComponent(video.videoPath));
             console.log('📂 مسیر فایل:', videoPath);
-    
+
             // بررسی وجود فایل
             if (fs.existsSync(videoPath)) {
                 console.log('✅ فایل ویدیو پیدا شد، حذف در حال انجام...');
@@ -215,11 +217,11 @@ class articleController {
             } else {
                 console.log('⚠ فایل فیزیکی پیدا نشد.');
             }
-    
+
             // حذف از دیتابیس
             await Video.deleteOne({ _id: video._id });
             console.log('✅ ویدیو از دیتابیس حذف شد.');
-    
+
             req.flash('success', 'ویدیو با موفقیت حذف شد.');
             return res.redirect('/admin/videos');
         } catch (error) {

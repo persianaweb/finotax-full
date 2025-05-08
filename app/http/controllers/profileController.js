@@ -24,7 +24,7 @@ class profileController {
 
             // دریافت پاسخ‌های کاربر
             const answers = await Answer.find({ user: user._id })
-                .populate('article', 'title slug') // فقط عنوان مقاله را دریافت می‌کنیم
+                .populate('article' , 'title slug')
                 .exec();
 
             // ساخت آرایه‌ای از اطلاعات مورد نیاز
@@ -38,7 +38,7 @@ class profileController {
                 createdAt: answer.createdAt  
             }));
 
-            const remainingDays = moment(user.subscriptionEndDate).diff(moment(), 'days');   
+            const remainingDays = moment(user.subscriptionEndDate).diff(moment(), 'days');     
 
             // return res.json(userAnswers );
 

@@ -97,10 +97,11 @@ router.post('/question/:id', QuestionController.destroy);
 router.get('/question/:id/edit', QuestionController.edit);
 router.post('/question/edit/:id', QuestionController.update);
 
-//question Routes for modules
-// router.get('/question', QuestionController.index);
+//modules Routes
 router.get('/modules/create', modulesController.create);
-router.post('/modules/create', modulesController.store);
+router.post('/modules/create', modulesController.store); 
+//question Routes for modules
+
 //Delete question
 // router.post('/question/:id', QuestionController.destroy);
 //Edit question

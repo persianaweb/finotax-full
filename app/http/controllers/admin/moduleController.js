@@ -1,5 +1,5 @@
 const Articles = require('app/models/articles');
-const Modules = require('./../../../models/module');
+const Modules = require('app/models/module');
 const QuizResult = require('app/models/QuizResult');
 const autoBind = require('auto-bind');
 
@@ -7,7 +7,7 @@ class QuestionController {
     constructor() {
         autoBind(this);
     }
-    async index(req, res) {
+    async index(req, res) { 
         try {
             const title = 'Question Page';
             let page = req.query.page || 1;

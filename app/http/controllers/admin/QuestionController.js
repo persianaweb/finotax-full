@@ -1,6 +1,7 @@
 const Articles = require('app/models/articles');
 const Question = require('app/models/Question');
 const QuizResult = require('app/models/QuizResult');
+const Modules = require('app/models/module');
 
 class QuestionController {
     async index(req, res) {
@@ -14,14 +15,14 @@ class QuestionController {
                 populate: 'blogId'
             });
             // res.json(questions)
-            res.render('admin/Questions/index', { title, questions });
+            res.render('admin/Questions/index', { title, questions });  
         } catch (error) {
             console.log(error);
         }
 
     }
 
-    async create(req, res) {
+    async create(req, res) { 
         try {
             const title = 'Question Create';
             const blogs = await Articles.find();
@@ -31,6 +32,7 @@ class QuestionController {
         }
 
     }
+    
 
     async edit(req, res) {
         try {
@@ -131,6 +133,7 @@ class QuestionController {
             res.status(500).json({ message: "خطایی رخ داد." });
         }
     }
+
     
 
 }
