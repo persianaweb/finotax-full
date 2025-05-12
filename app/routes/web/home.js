@@ -9,6 +9,7 @@ const profileController = require('app/http/controllers/profileController');
 const QuestionController = require('app/http/controllers/admin/QuestionController');
 const SubscriptionController = require('app/http/controllers/SubscriptionController');
 const keywordsController = require('app/http/controllers/keywordsController'); 
+const QuestionControllerForSingleModules = require('app/http/controllers/admin/QuestionControllerSingleModules');
 
 //middlleware
 const userRedirect = require('app/http/middlleware/UserRedirect');
@@ -21,8 +22,9 @@ router.get('/learning', homeController.learnPage);
 
 //Single articlePage
 router.get('/article/:slug', homeController.articlePage);   
-router.get('/module/:slug', homeController.modulePage);
+router.get('/module/:slug', homeController.modulePage); 
 router.post('/article/save-quiz-result', QuestionController.saveQuizResult); 
+router.post('/module/save-quiz-result', QuestionControllerForSingleModules.saveQuizResult); 
 
 // subscribes
 router.get('/user/subscribe',noUserRedirect.handle , SubscriptionController.subscribe);

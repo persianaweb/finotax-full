@@ -1,52 +1,28 @@
 const Articles = require('app/models/articles');
-const Question = require('app/models/Question');
-const QuestionModules = require('app/models/singleModulesQuestions');
-const QuizResult = require('app/models/QuizResult');
+const Question = require('app/models/singleModulesQuestions');
+const QuizResult = require('app/models/QuizResultForModules');
 const Modules = require('app/models/module');
 
 class QuestionController {
-    async index(req, res) {
-        try {
-            const title = 'Question Page';
-            let page = req.query.page || 1;
-            const questions = await Question.paginate({}, {
-                page,
-                limit: 5,
-                sort: { createdAt: -1 },
-                populate: 'blogId'
-            });
-            const QuestionForSingleModules = await QuestionModules.paginate({}, {
-                page,
-                limit: 5,
-                sort: { createdAt: -1 },
-                populate: 'blogId'
-            });
-            // res.json(questions)
-            res.render('admin/Questions/index', { title, questions, QuestionForSingleModules });
-        } catch (error) {
-            console.log(error);
-        }
 
-    }
-
-    async create(req, res) {
+    async create(req, res) { 
         try {
             const title = 'Question Create';
-            const blogs = await Articles.find();
-            res.render('admin/Questions/create', { title, blogs });
+            const blogs = await Modules.find();
+            res.render('admin/QuestionsForModules/create', { title, blogs });
         } catch (error) {
             console.log(error);
         }
 
     }
-
+    
 
     async edit(req, res) {
         try {
             const title = 'Edit Question';
-            const blogs = await Articles.find();
+            const blogs = await Modules.find();
             const questions = await Question.findById(req.params.id).populate('blogId');
-            res.render('admin/Questions/edit', { title, questions, blogs });
+            res.render('admin/QuestionsForModules/edit', { title, questions, blogs });
         } catch (error) {
             console.log(error)
         }
@@ -54,7 +30,7 @@ class QuestionController {
 
     async store(req, res) {
         try {
-            const { blogId, questionText, options, optionsText, correctAnswer } = req.body;
+            const { blogId, questionText, options,optionsText, correctAnswer } = req.body;
             const addQuestions = await new Question({
                 blogId,
                 questionText,
@@ -101,24 +77,24 @@ class QuestionController {
 
         }
     }
-    async saveQuizResult(req, res) {
+    async saveQuizResult(req, res) { 
         try {
             const { userId, articleId, score, correctAnswers, totalQuestions } = req.body;
-
+    
             if (!userId || !articleId) {
                 return res.status(400).json({ message: "شناسه کاربر و مقاله الزامی است." });
             }
-
+    
             // بررسی اینکه آیا قبلاً نتیجه‌ای برای این مقاله ثبت شده است
             const existingResult = await QuizResult.findOne({ user: userId, article: articleId });
-
+    
             if (existingResult) {
                 // اگر قبلاً نتیجه‌ای وجود داشته باشد، آن را آپدیت می‌کنیم
                 existingResult.score = score;
                 existingResult.correctAnswers = correctAnswers;
-                existingResult.totalQuestions = totalQuestions;
+                existingResult.totalQuestions = totalQuestions; 
                 existingResult.createdAt = new Date(); // زمان ثبت جدید
-
+    
                 await existingResult.save();
                 return res.status(200).json({ message: "نمره بروز شد!", quizResult: existingResult });
             } else {
@@ -130,18 +106,18 @@ class QuestionController {
                     correctAnswers,
                     totalQuestions
                 });
-
+    
                 await newQuizResult.save();
                 return res.status(200).json({ message: "نمره ذخیره شد!", quizResult: newQuizResult });
             }
-
-        } catch (error) {
+    
+        } catch (error) { 
             console.error("خطا در ذخیره نمره آزمون:", error);
             res.status(500).json({ message: "خطایی رخ داد." });
         }
     }
 
-
+    
 
 }
 

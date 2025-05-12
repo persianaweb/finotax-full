@@ -25,14 +25,50 @@
     <div id="main-text" class="textblogbody"><%- article.editor1 %></div>
 
 
-
-
-
+      <div class="flex-column test-container questions-section">
+        <div class="flex-column test-header">
+            <div>
+                <h1>آزمون <%- article.title %> </h1>
+            </div>
+            <div class="q-count">
+                <img src="/images/folder.svg" alt="">
+                <div id="quizScore" class="q-count"></div>
+            </div>
+        </div>
+        <% if (questions.length> 0) { %>
+            <form class="test-form" id="quizForm">
+                <% questions.forEach((question, index) => { %> 
+                    <div class="question-box">
+                        <p><strong>سوال <%- index + 1 %>:</strong> <%- question.questionText %></p>
+            
+                        <% question.options.forEach((option, i) => { %>
+                            <label class="option-label">
+                                <input type="radio" name="question-<%- index %>" value="<%- i %>"
+                                    data-correct="<%- question.correctAnswer %>" data-index="<%- i %>">
+                                <span><%- option %></span>
+                            </label>
+                            <p class="option-text" data-index="<%- i %>" style="display: none; margin-left: 20px; color: #666;">
+                                <%- question.optionsText[i] %>
+                            </p>
+                        <% }) %>
+                    </div>
+                <% }) %>
+            
+                <div class="flex-row text-btn">
+                    <button type="button" id="submitQuiz">تصحیح</button>
+                </div>
+            </form>
+            
+            
+            <% } else { %>
+                <p>هیچ سوالی برای این مقاله ثبت نشده است.</p>
+                <% } %>
+    </div>
 
 </section>
 
 <script src="/js/alert.js"></script>
-<script src="/js/quiz.js"></script>
+<script src="/js/quizModules.js"></script>
 <script>
     const USER_ID = "<%= users ? users._id : null %>";
     const ARTICLE_ID = "<%= article ? article._id : null %>";

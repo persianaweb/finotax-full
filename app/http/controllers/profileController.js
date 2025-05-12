@@ -32,7 +32,7 @@ class profileController {
                 articleTitle: answer.article.title,
                 articleSlug: answer.article.slug,
                 articleId: answer.article._id,
-                score: answer.score,
+                score: answer.score, 
                 correctAnswers: answer.correctAnswers,
                 totalQuestions: answer.totalQuestions,
                 createdAt: answer.createdAt  

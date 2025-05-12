@@ -42,7 +42,7 @@
         </div>
         <% if (questions.length> 0) { %>
             <form class="test-form" id="quizForm">
-                <% questions.forEach((question, index) => { %>
+                <% questions.forEach((question, index) => { %> 
                     <div class="question-box">
                         <p><strong>سوال <%- index + 1 %>:</strong> <%- question.questionText %></p>
             
@@ -69,6 +69,7 @@
                 <p>هیچ سوالی برای این مقاله ثبت نشده است.</p>
                 <% } %>
     </div>
+    
 </section>
 
 <script src="/js/quiz.js"></script>

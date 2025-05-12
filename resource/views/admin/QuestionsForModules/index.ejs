@@ -1,0 +1,94 @@
+<link rel="stylesheet" href="/admin/css/content.css">
+
+<div class="content-main">
+    <div class=" m-4  p-3 main-content table-responsive">
+        <div class="d-flex align-items-center justify-content-start my-auto content-header">
+            <div>
+                <h6>سوالات صفحه ماژول ها</h6>
+                <p>در اینجا می توانید سوالات مربوط به دوره های خود را مدیریت کنید.</p>
+            </div>
+            <div class="container-btn-add">
+                <a href="/admin/question/create" class="btn-add my-auto" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    data-bs-custom-class="custom-tooltip" data-bs-title="افزودن سوال جدید"><i
+                        class="fas fa-plus m-auto"></i>افزودن سوال</a>
+            </div>
+        </div>
+        <table class="custom-table container">
+            <thead>
+                <tr>
+                    <th>متن سوال</th>
+                    <th>نام دوره</th>
+                    <th>تنظیمات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% questions.docs.forEach(question =>{ %> 
+                <tr>
+                    <td><a href="#"><%- question.questionText %></a></td>
+                    <td><%= question.blogId ? question.blogId.title : 'بدون مقاله' %></td>
+                    <td class="d-flex justify-content-center">
+                        <a href="/admin/question/<%- question._id %>/edit" style="margin-left: 5px;">
+                            <button class="btn pencil" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-custom-class="custom-tooltip" data-bs-title="ویرایش"><i
+                            class="fas fa-pencil-alt"></i></button>
+                        </a>
+                        <form action="/admin/question/<%- question._id %>" method="POST">
+                    <button type="submit" class="btn trash" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        data-bs-custom-class="custom-tooltip" data-bs-title="حذف "><i
+                            class="far fa-trash-alt"></i></button>
+                    </form>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <div class="d-flex p-3 justify-content-center">
+            <nav>
+                <% if(questions.pages >0){ %> 
+                <ul class="d-flex paginate">
+                    <% if (questions.page == 1) { %>
+                    <a class="p-link " >
+                        <li class="pag">قبلی</li>
+                    </a>
+                    <% } else { %>
+                        <a class="p-link " href="/admin/question/?page=<%= 1 %>">
+                            <li class="pag">قبلی</li>
+                        </a>
+                        <% } %>
+                        <% var i = ((questions.page) > 5 ? (questions.page) - 4 : 1) %>
+                        <% if (i !== 1) { %>
+                    <a class="p-link">
+                        <li class="pag">...</li>
+                    </a>
+                    <% } %>
+                    <% for (; i <= ((questions.page) + 4) && i <= questions.pages; i++) { %>
+                        <% if (i == questions.page) { %>
+                    <a class="p-link" href="/admin/question/?page=<%= i %>">
+                        <li class="pag"><%= i %></li>
+                    </a>
+                    <% } else { %>
+                    <a class="p-link" href="/admin/question/?page=<%= i %>">
+                        <li class="pag"><%= i %></li>
+                    </a>
+                    <% } %>
+                    <% if (i == (questions.page) + 4 && i < questions.pages) { %>
+                        <a class="p-link">
+                            <li class="pag">...</li>
+                        </a>
+                    <% } %>
+                    <% } %>
+                    <% if (questions.page == questions.pages) { %>
+                    <a class="p-link">
+                        <li class="pag">بعدی</li>
+                    </a>
+                    <% } else { %>
+                        <a class="p-link" href="/admin/question/?page=<%= questions.pages %>">
+                            <li class="pag">بعدی</li>
+                        </a>
+                        <% } %>
+                </ul>
+                <% } %>
+            </nav>
+        </div>
+    </div>
+</div>

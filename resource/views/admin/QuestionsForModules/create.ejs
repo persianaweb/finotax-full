@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="/admin/css/add-product.css">
+<link rel="stylesheet" href="/admin/css/component-chosen.min.css">
+
+<div class="content-main">
+
+    <div class=" m-4  p-2 main-content">
+
+        <div class="d-flex justify-content-center p-2 title">افزودن سوالات</div>
+
+
+        <form class="container" action="/admin/question-modules/create" method="POST">
+            <!-- انتخاب مقاله -->
+            <label for="blogId">انتخاب دوره موردنظر:</label>
+            <select name="blogId" required>
+                <% blogs.forEach(blog=> { %>
+                    <option value="<%= blog._id %>">
+                        <%= blog.title %>
+                    </option>
+                    <% }) %>
+            </select>
+
+            <!-- سوال -->
+            <label for="questionText">متن سوال:</label>
+            <input type="text" name="questionText" required>
+
+            <!-- گزینه‌ها -->
+            <label>گزینه‌ها:</label>
+            <input type="text" name="options[]" required>
+            <input type="text" name="options[]" required>
+            <input type="text" name="options[]" required>
+            <input type="text" name="options[]" required>
+
+            <!-- گزینه‌ها توضیح-->
+            <label>توضیح گزینه ها:</label>
+            <input type="text" name="optionsText[]" required>
+            <input type="text" name="optionsText[]" required>
+            <input type="text" name="optionsText[]" required>
+            <input type="text" name="optionsText[]" required>
+
+            <!-- انتخاب گزینه صحیح -->
+            <label for="correctAnswer">گزینه صحیح (عدد بین 0 تا 3):</label>
+            <input type="number" name="correctAnswer" min="0" max="3" required>
+
+            <button type="submit">ذخیره سوال</button>
+        </form>
+
+    </div>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.6/chosen.jquery.min.js"></script>
+<script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+<script src="/admin/js/imagePreview.js"></script>
+<script src="/admin/js/imageInput.js"></script>
+<script src="/admin/js/chosen.js"></script>
+<script src="/admin/js/ckeditor.js"></script>

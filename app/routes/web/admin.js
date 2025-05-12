@@ -26,6 +26,7 @@ const categoryController = require('app/http/controllers/categoryController');
 const keywordsController = require('app/http/controllers/keywordsController'); 
 const articleController = require('app/http/controllers/articleController');
 const QuestionController = require('app/http/controllers/admin/QuestionController');
+const QuestionControllerForSingleModules = require('app/http/controllers/admin/QuestionControllerSingleModules');
 const modulesController = require('app/http/controllers/admin/moduleController');
 const SubscriptionController = require('app/http/controllers/SubscriptionController');
 //AdminRoutes
@@ -76,6 +77,7 @@ router.get('/articles', articleController.index);
 router.get('/articles/create', articleController.create);
 router.post('/articles/create', upload.single('image'), fileToField.handle, articleController.store);
 // router.post('/articles/create', upload.single('image'), fileToField.handle, articleValidator.handle(), articleController.store);
+
 //Delete Article
 router.post('/articles/:id', articleController.destroy);
 //Edit Article
@@ -87,7 +89,7 @@ router.get('/uploadVideo', articleController.createVideo);
 router.post('/upload-video',  uploadVideo.single('video'), articleController.uploadVideo);
 router.post('/videos/:id/delete', articleController.deleteVideo);
 
-//question Routes  
+//question Routes for all modules Routes  
 router.get('/question', QuestionController.index);
 router.get('/question/create', QuestionController.create);
 router.post('/question/create', QuestionController.store);
@@ -97,16 +99,23 @@ router.post('/question/:id', QuestionController.destroy);
 router.get('/question/:id/edit', QuestionController.edit);
 router.post('/question/edit/:id', QuestionController.update);
 
+//question Routes for single modules Routes  
+router.get('/question-modules/create', QuestionControllerForSingleModules.create);
+router.post('/question-modules/create', QuestionControllerForSingleModules.store);
+//Delete question
+router.post('/question-modules/:id', QuestionControllerForSingleModules.destroy);
+//Edit question
+router.get('/question-modules/:id/edit', QuestionControllerForSingleModules.edit);
+router.post('/question-modules/edit/:id', QuestionControllerForSingleModules.update);
+
 //modules Routes
 router.get('/modules/create', modulesController.create);
 router.post('/modules/create', modulesController.store); 
-//question Routes for modules
-
+//Edit modules
+router.get('/modules/:id/edit', modulesController.edit);
+router.post('/modules/edit/:id', modulesController.update);
 //Delete question
-// router.post('/question/:id', QuestionController.destroy);
-//Edit question
-// router.get('/question/:id/edit', QuestionController.edit);
-// router.post('/question/edit/:id', QuestionController.update);
+router.post('/modules/:id', modulesController.destroy);
 
 //tickets
 router.get('/tickets', adminTicketController.index);

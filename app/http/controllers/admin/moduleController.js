@@ -7,23 +7,6 @@ class QuestionController {
     constructor() {
         autoBind(this);
     }
-    async index(req, res) { 
-        try {
-            const title = 'Question Page';
-            let page = req.query.page || 1;
-            const questions = await Question.paginate({}, {
-                page,
-                limit: 5,
-                sort: { createdAt: -1 },
-                populate: 'blogId'
-            });
-            // res.json(questions)
-            res.render('admin/Questions/index', { title, questions });
-        } catch (error) {
-            console.log(error);
-        }
-
-    }
 
     async create(req, res) {
         try {
@@ -38,17 +21,18 @@ class QuestionController {
 
     async edit(req, res) {
         try {
-            const title = 'Edit Question';
+            const title = 'Edit modules';
             const blogs = await Articles.find();
-            const questions = await Question.findById(req.params.id).populate('blogId');
-            res.render('admin/Questions/edit', { title, questions, blogs });
+            const modules = await Modules.findById(req.params.id); 
+            // return console.log(modules.blogId);
+            res.render('admin/modules/edit', { title , blogs , modules });
         } catch (error) {
             console.log(error)
         }
     }
 
     async store(req, res) {
-        try {
+        try { 
             let userId = req.session.userId;
             const { blogId, title, editor1 } = req.body;
             // return res.json(req.body)
@@ -60,7 +44,7 @@ class QuestionController {
                 blogId
             })
             addModules.save();
-            return res.redirect('/admin/modules/create');
+            return res.redirect('/admin/articles');
 
         } catch (error) {
             res.status(500).json({ error: 'مشکلی در ذخیره ماژول پیش آمد' });
@@ -76,9 +60,9 @@ class QuestionController {
         try {
             let updateFields = { ...req.body };
 
-            await Question.findByIdAndUpdate(req.params.id, { $set: updateFields });
+            await Modules.findByIdAndUpdate(req.params.id, { $set: updateFields });
             console.log('massages', 'ویرایش مطلب انجام شد');
-            return res.redirect('/admin/question');
+            return res.redirect('/admin/articles');
         } catch (err) {
             return next(err);
         }
@@ -86,59 +70,20 @@ class QuestionController {
 
     async destroy(req, res) {
         try {
-            let question = await Question.findById(req.params.id);
+            let modules = await Modules.findById(req.params.id);
 
-            if (!question) {
+            if (!modules) {
                 console.log('سوالی با این شناسه یافت نشد');
-                return res.redirect('/admin/question');
+                return res.redirect('/admin/articles');
             }
 
-            await question.deleteOne({ _id: question._id });
+            await modules.deleteOne({ _id: modules._id });
 
-            return res.redirect('/admin/question');
+            return res.redirect('/admin/articles');
         } catch (error) {
             // req.flash('errors', 'این محصول قابل حذف نیست : مشکل در نام تصاویر');
-            return res.redirect('/admin/question');
+            return res.redirect('/admin/articles');
 
-        }
-    }
-    async saveQuizResult(req, res) {
-        try {
-            const { userId, articleId, score, correctAnswers, totalQuestions } = req.body;
-
-            if (!userId || !articleId) {
-                return res.status(400).json({ message: "شناسه کاربر و مقاله الزامی است." });
-            }
-
-            // بررسی اینکه آیا قبلاً نتیجه‌ای برای این مقاله ثبت شده است
-            const existingResult = await QuizResult.findOne({ user: userId, article: articleId });
-
-            if (existingResult) {
-                // اگر قبلاً نتیجه‌ای وجود داشته باشد، آن را آپدیت می‌کنیم
-                existingResult.score = score;
-                existingResult.correctAnswers = correctAnswers;
-                existingResult.totalQuestions = totalQuestions;
-                existingResult.createdAt = new Date(); // زمان ثبت جدید
-
-                await existingResult.save();
-                return res.status(200).json({ message: "نمره بروز شد!", quizResult: existingResult });
-            } else {
-                // اگر نتیجه‌ای وجود نداشته باشد، یک رکورد جدید ایجاد کن
-                const newQuizResult = new QuizResult({
-                    user: userId,
-                    article: articleId,
-                    score,
-                    correctAnswers,
-                    totalQuestions
-                });
-
-                await newQuizResult.save();
-                return res.status(200).json({ message: "نمره ذخیره شد!", quizResult: newQuizResult });
-            }
-
-        } catch (error) {
-            console.error("خطا در ذخیره نمره آزمون:", error);
-            res.status(500).json({ message: "خطایی رخ داد." });
         }
     }
 

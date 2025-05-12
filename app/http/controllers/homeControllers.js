@@ -1,7 +1,7 @@
 const Article = require('app/models/articles');
 const Category = require('app/models/categoryArticle');
 const Question = require('app/models/Question');
-const Modules = require('app/models/module');
+const singleQuestion = require('app/models/singleModulesQuestions');
 const moduleSchema = require('app/models/module');
 
 const Video = require('app/models/video');
@@ -193,7 +193,7 @@ class homeController {
             const title = article.slug;
 
             // ارسال اطلاعات به صفحه جدید برای نمایش ماژول‌ها
-            res.render('articleModules', { article, modules, date, time, title ,questions });
+            res.render('articleModules', { article, modules, date, time, title, questions });
         } catch (error) {
             console.log(error);
             res.status(500).send('خطای سرور');
@@ -222,13 +222,14 @@ class homeController {
             await module.save();
 
             // دریافت سوالات و ویدیوهای مرتبط با ماژول
-            const questions = await Question.find({ blogId: module.blogId._id }).exec();
+            const questions = await singleQuestion.find({ blogId: module._id }).exec();
             const videos = await Video.find({ articleId: module.blogId._id }).exec();
 
             // فرمت تاریخ
             let date = moment(module.createdAt).format('jD - jMMMM - jYYYY ');
             let time = moment(module.createdAt).format('HH:mm');
             const title = module.title;
+
 
             // ارسال اطلاعات به صفحه نمایش ماژول
             res.render('singleArticle', { article: module, videos, questions, date, time, title });

@@ -6,7 +6,7 @@ class keywordsController {
         this.store = this.store.bind(this);
         this.update = this.update.bind(this);
         this.updateProcess = this.updateProcess.bind(this); 
-
+ 
     }
     async keywordsPage(req, res) {
         try {
@@ -17,7 +17,7 @@ class keywordsController {
         } catch (error) { 
             console.log(error)
         }
-
+ 
     }
 
     async index(req, res) {
