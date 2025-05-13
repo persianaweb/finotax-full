@@ -2,30 +2,38 @@
 <link rel="stylesheet" href="/css/single-article.css">
 <link rel="stylesheet" href="/css/questions.css">
 <link rel="stylesheet" href="/css/test.css">
-
+<style>
+    video {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+</style>
 
 
 <section class="main flex-column main-single" style="margin-bottom: 70px;">
 
+    <div>
+        <% if (videos.length> 0) { %>
+            <% videos.forEach(video=> { %>
+                <video controls>
+                    <source src="<%= video.videoPath %>" type="video/mp4">
+                    مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+                </video>
+                <% }) %>
+                    <% } else { %>
+                        <p>ویدیویی برای این مقاله ثبت نشده است.</p>
+                        <% } %>
+    </div>
 
     <div class="titleblog">
         <%- article.title %>
     </div>
-    <div id="main-text" class="textblogbody">
-        <% if (videos.length > 0) { %>
-            <video controls>
-                <source src="<%= videos[0].videoPath %>" type="video/mp4">
-                مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
-            </video>
-        <% } else { %>
-            <p>ویدیویی برای این مقاله ثبت نشده است.</p>
-        <% } %>
-    </div>
-    
+
     <div id="main-text" class="textblogbody"><%- article.editor1 %></div>
 
 
-      <div class="flex-column test-container questions-section">
+    <div class="flex-column test-container questions-section">
         <div class="flex-column test-header">
             <div>
                 <h1>آزمون <%- article.title %> </h1>
@@ -37,29 +45,30 @@
         </div>
         <% if (questions.length> 0) { %>
             <form class="test-form" id="quizForm">
-                <% questions.forEach((question, index) => { %> 
+                <% questions.forEach((question, index)=> { %>
                     <div class="question-box">
                         <p><strong>سوال <%- index + 1 %>:</strong> <%- question.questionText %></p>
-            
-                        <% question.options.forEach((option, i) => { %>
+
+                        <% question.options.forEach((option, i)=> { %>
                             <label class="option-label">
                                 <input type="radio" name="question-<%- index %>" value="<%- i %>"
                                     data-correct="<%- question.correctAnswer %>" data-index="<%- i %>">
                                 <span><%- option %></span>
                             </label>
-                            <p class="option-text" data-index="<%- i %>" style="display: none; margin-left: 20px; color: #666;">
+                            <p class="option-text" data-index="<%- i %>"
+                                style="display: none; margin-left: 20px; color: #666;">
                                 <%- question.optionsText[i] %>
                             </p>
-                        <% }) %>
+                            <% }) %>
                     </div>
-                <% }) %>
-            
-                <div class="flex-row text-btn">
-                    <button type="button" id="submitQuiz">تصحیح</button>
-                </div>
+                    <% }) %>
+
+                        <div class="flex-row text-btn">
+                            <button type="button" id="submitQuiz">تصحیح</button>
+                        </div>
             </form>
-            
-            
+
+
             <% } else { %>
                 <p>هیچ سوالی برای این مقاله ثبت نشده است.</p>
                 <% } %>

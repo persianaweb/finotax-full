@@ -9,7 +9,8 @@ async function checkSubscriptions() {
         { isActive: false }
     );
 
-    console.log(`کران جاب اجرا شد. ${result.modifiedCount} کاربر غیرفعال شد.`);
+    // console.log(`کران جاب اجرا شد. ${result.modifiedCount} کاربر غیرفعال شد.`);
+    console.log(`CronJobs is run ${result.modifiedCount} User desabled`);
 }
 
 // اجرای کران جاب **هر روز ساعت ۰۰:۰۰ (نیمه‌شب)**

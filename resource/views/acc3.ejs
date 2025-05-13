@@ -7,17 +7,17 @@
     </div>
 
     <div class="container">
-        <% articles.forEach(article=>{ %>
-            <a href="/article/<%- article.slug %>" class="flip-box">
+        <% articles.forEach((article,index)=>{ %>
+            <a href="/article/<%= article.slug %>" class="flip-box">
                 <div class="flip-inner">
                     <div class="flip-front">
                         <img src="<%= article.image %>" alt="<%= article.title %>">
-                       <div>
-                        <img src="./images/check_5610944.png" alt="">
-                        <p>
-                            <%= article.title %>
-                        </p>
-                       </div>
+                        <span class="num">بخش <%= index + 1 %></span>
+                        <div>
+                            <p>
+                                <%= article.title %>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </a>

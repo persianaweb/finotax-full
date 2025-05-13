@@ -4,6 +4,7 @@ const Modules = require('app/models/module');
 const Category = require('app/models/categoryArticle');
 const User = require('app/models/users');
 const Video = require('app/models/video');
+const VideoForModules = require('app/models/videoForModules');
 const autoBind = require('auto-bind');
 const fs = require('fs');
 const path = require('path');
@@ -29,7 +30,7 @@ class articleController {
 
     async videos(req, res) {
         try {
-            const title = 'videos';
+            const title = 'videos'; 
             let page = req.query.page || 1;
             const videos = await Video.paginate({}, {
                 page,
@@ -37,7 +38,13 @@ class articleController {
                 sort: { createdAt: -1 },
                 populate: 'articleId'
             });
-            res.render('admin/videos/index', { title, videos, massages: req.flash('errors') });
+            const videoForModules = await VideoForModules.paginate({}, {
+                page,
+                limit: 5,
+                sort: { createdAt: -1 },
+                populate: 'articleId'
+            });
+            res.render('admin/videos/index', { title, videos, videoForModules, massages: req.flash('errors') });
         } catch (error) {
             console.log(error)
         }

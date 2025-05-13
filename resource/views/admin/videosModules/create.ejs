@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="/admin/css/add-product.css">
+
+<div class="content-main">
+    <div class=" m-4  p-2 main-content">
+        <div class="d-flex justify-content-center p-2 title">افزودن ویدیو</div>
+        <form action="/admin/upload-video-Modules" method="POST" enctype="multipart/form-data">
+            <label for="article">انتخاب مقاله:</label>
+            <select name="articleId" id="article" required>
+                <% articles.forEach(article=> { %>
+                    <option value="<%= article._id %>">
+                        <%= article.title %>
+                    </option>
+                    <% }); %>
+            </select>
+
+            <label for="video">انتخاب ویدیو:</label>
+            <input type="file" name="video" id="video" accept="video/mp4,video/mkv,video/webm" required>
+
+            <button type="submit">آپلود ویدیو</button>
+        </form>
+
+
+
+    </div>
+</div>

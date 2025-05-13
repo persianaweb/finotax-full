@@ -4,7 +4,7 @@
     <div class=" m-4  p-3 main-content table-responsive">
         <div class="d-flex align-items-center justify-content-start my-auto content-header">
             <div>
-                <h6>همه نوشته ها</h6>
+                <h6>همه دوره ها</h6>
                 <p>در اینجا می توانید نوشته های خود را مدیریت کنید.</p>
             </div>
             <div class="container-btn-add">
@@ -18,7 +18,6 @@
                 <tr>
                     <th>تصویر دوره</th>
                     <th>موضوع</th>
-                    <th>دیدگاه ها</th>
                     <th>کلیک ها</th>
                     <th>تنظیمات</th>
                 </tr>
@@ -28,7 +27,6 @@
                 <tr>
                     <td><img src="<%- article.image %>" alt="<%- article.title %>" class="img-fluid img-custom"></td>
                     <td><a href="#"><%- article.title %></a></td>
-                    <td><%- article.commentCount %></td>
                     <td><%- article.viewCount %></td>
                     <td class="d-flex justify-content-center">
                         <a href="/admin/articles/<%- article._id %>/edit" style="margin-left: 5px;">
