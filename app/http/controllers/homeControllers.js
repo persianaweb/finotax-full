@@ -3,6 +3,7 @@ const Category = require('app/models/categoryArticle');
 const Question = require('app/models/Question');
 const singleQuestion = require('app/models/singleModulesQuestions');
 const moduleSchema = require('app/models/module');
+const Scores = require('./../../models/QuizResultForModules')
 
 const VideoCource = require('app/models/video');
 const VideoModule = require('app/models/videoForModules');
@@ -187,15 +188,18 @@ class homeController {
             // دریافت ماژول‌های مرتبط با مقاله
             const modules = await moduleSchema.find({ blogId: article._id }).exec();
             const questions = await Question.find({ blogId: article._id }).exec();
-             const videos = await VideoCource.find({ articleId: article._id }).exec();
+            const videos = await VideoCource.find({ articleId: article._id }).exec();
+            const scores = await Scores.find({ user: req.session.userId }).exec();
 
             // فرمت تاریخ
             let date = moment(article.createdAt).format('jD - jMMMM - jYYYY ');
             let time = moment(article.createdAt).format('HH:mm');
             const title = article.slug;
+            modules.sort((a, b) => a.createdAt - b.createdAt);
+            console.log(scores.score)
 
             // ارسال اطلاعات به صفحه جدید برای نمایش ماژول‌ها
-            res.render('articleModules', { article, modules, date, time,videos, title, questions });
+            res.render('articleModules', { article, modules, date, time, videos, title, questions, scores });
         } catch (error) {
             console.log(error);
             res.status(500).send('خطای سرور');

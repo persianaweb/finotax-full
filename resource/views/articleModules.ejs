@@ -9,6 +9,12 @@
         height: auto;
         object-fit: cover;
     }
+
+ .disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    filter: grayscale(100%);
+}
 </style>
 
 <section class="main flex-column">
@@ -31,25 +37,28 @@
         </p>
     </div>
 
-    <div class="container">
+<div class="container">
+    <% let unlockedIndex = 0; %>
 
-        <% modules.forEach((module, index)=> { %>
-            <a href="/module/<%= module.slug %>" class="flip-box">
-                <div class="flip-inner">
-                    <div class="flip-front">
-                        <div>
-                            <img src="./images/check_5610944.png" alt="">
-                            <span class="num">ماژول <%= index + 1 %></span>
-                            <p>
-                                <%= module.title %>
-                            </p>
-                        </div>
+    <% modules.forEach((module, index) => { 
+        if (index === 0 || scores.some(score => score.article.toString() === modules[index - 1]._id.toString() && score.score >= 70)) {
+            unlockedIndex = index;
+        }
+        let unlocked = index <= unlockedIndex;
+    %>
+        <a href="/module/<%= module.slug %>" class="flip-box <%= unlocked ? '' : 'disabled' %>">
+            <div class="flip-inner">
+                <div class="flip-front">
+                    <div>
+                        <img src="./images/check_5610944.png" alt="">
+                        <span class="num">ماژول <%= index + 1 %></span>
+                        <p><%= module.title %></p>
                     </div>
                 </div>
-            </a>
-            <% }) %>
-
-    </div>
+            </div>
+        </a>
+    <% }) %>
+</div>
 
     <div class="flex-column test-container questions-section">
         <div class="flex-column test-header">
