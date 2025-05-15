@@ -3,8 +3,9 @@ const Category = require('app/models/categoryArticle');
 const Question = require('app/models/Question');
 const singleQuestion = require('app/models/singleModulesQuestions');
 const moduleSchema = require('app/models/module');
-const Scores = require('./../../models/QuizResultForModules')
-
+const Scores = require('app/models/QuizResultForModules');
+const ScoresCource = require('app/models/QuizResult');
+const VideoForCategory = require('app/models/videoForCategory');
 const VideoCource = require('app/models/video');
 const VideoModule = require('app/models/videoForModules');
 const autoBind = require('auto-bind');
@@ -43,11 +44,17 @@ class homeController {
                 return res.render('acc1', { articles: [] });
             }
             const articles = await Article.find({ categories: acc1Category._id }).sort({ createdAt: -1 }).populate([{ path: 'categories', select: 'name' }]).exec();
-            res.render('acc1', { articles });
-        } catch (error) {
-            console.log(error);
-        }
+            const scores = await ScoresCource.find({ user: req.session.userId }).exec();
 
+            const videos = await VideoForCategory.find({ articleId: acc1Category._id }).exec();
+            articles.sort((a, b) => a.createdAt - b.createdAt);
+            // return res.json(videos)ک
+
+            res.render('acc1', { articles, scores, videos });
+        } catch (error) {
+            console.log(error); 
+        }
+ 
     }
 
     async acc2(req, res) {
@@ -57,7 +64,10 @@ class homeController {
                 return res.render('acc2', { articles: [] });
             }
             const articles = await Article.find({ categories: acc2Category._id }).sort({ createdAt: -1 }).populate([{ path: 'categories', select: 'name' }]).exec();
-            res.render('acc2', { articles });
+            const scores = await ScoresCource.find({ user: req.session.userId }).exec();
+            const videos = await VideoForCategory.find({ articleId: acc2Category._id }).exec();
+            articles.sort((a, b) => a.createdAt - b.createdAt);
+            res.render('acc2', { articles, scores, videos });
         } catch (error) {
             console.log(error);
         }
@@ -71,7 +81,10 @@ class homeController {
                 return res.render('acc3', { articles: [] });
             }
             const articles = await Article.find({ categories: acc3Category._id }).sort({ createdAt: -1 }).populate([{ path: 'categories', select: 'name' }]).exec();
-            res.render('acc3', { articles });
+            const scores = await ScoresCource.find({ user: req.session.userId }).exec();
+            const videos = await VideoForCategory.find({ articleId: acc3Category._id }).exec();
+            articles.sort((a, b) => a.createdAt - b.createdAt);
+            res.render('acc3', { articles, scores, videos });
         } catch (error) {
             console.log(error);
         }
@@ -85,7 +98,10 @@ class homeController {
                 return res.render('tax1', { articles: [] });
             }
             const articles = await Article.find({ categories: tax1Category._id }).sort({ createdAt: -1 }).populate([{ path: 'categories', select: 'name' }]).exec();
-            res.render('tax1', { articles });
+            const scores = await ScoresCource.find({ user: req.session.userId }).exec();
+            const videos = await VideoForCategory.find({ articleId: tax1Category._id }).exec();
+            articles.sort((a, b) => a.createdAt - b.createdAt);
+            res.render('tax1', { articles, scores, videos });
         } catch (error) {
             console.log(error);
         }
@@ -99,7 +115,10 @@ class homeController {
                 return res.render('tax2', { articles: [] });
             }
             const articles = await Article.find({ categories: tax2Category._id }).sort({ createdAt: -1 }).populate([{ path: 'categories', select: 'name' }]).exec();
-            res.render('tax2', { articles });
+            const scores = await ScoresCource.find({ user: req.session.userId }).exec();
+            const videos = await VideoForCategory.find({ articleId: tax2Category._id }).exec();
+            articles.sort((a, b) => a.createdAt - b.createdAt);
+            res.render('tax2', { articles, scores, videos });
         } catch (error) {
             console.log(error);
         }
@@ -113,7 +132,10 @@ class homeController {
                 return res.render('tax3', { articles: [] });
             }
             const articles = await Article.find({ categories: tax3Category._id }).sort({ createdAt: -1 }).populate([{ path: 'categories', select: 'name' }]).exec();
-            res.render('tax3', { articles });
+            const scores = await ScoresCource.find({ user: req.session.userId }).exec();
+            const videos = await VideoForCategory.find({ articleId: tax3Category._id }).exec();
+            articles.sort((a, b) => a.createdAt - b.createdAt);
+            res.render('tax3', { articles, scores, videos });
         } catch (error) {
             console.log(error);
         }
@@ -127,7 +149,10 @@ class homeController {
                 return res.render('fin1', { articles: [] });
             }
             const articles = await Article.find({ categories: fin1Category._id }).sort({ createdAt: -1 }).populate([{ path: 'categories', select: 'name' }]).exec();
-            res.render('fin1', { articles });
+            const scores = await ScoresCource.find({ user: req.session.userId }).exec();
+            const videos = await VideoForCategory.find({ articleId: fin1Category._id }).exec();
+            articles.sort((a, b) => a.createdAt - b.createdAt);
+            res.render('fin1', { articles, scores, videos });
         } catch (error) {
             console.log(error);
         }
@@ -141,7 +166,10 @@ class homeController {
                 return res.render('fin2', { articles: [] });
             }
             const articles = await Article.find({ categories: fin2Category._id }).sort({ createdAt: -1 }).populate([{ path: 'categories', select: 'name' }]).exec();
-            res.render('fin2', { articles });
+            const scores = await ScoresCource.find({ user: req.session.userId }).exec();
+            const videos = await VideoForCategory.find({ articleId: fin2Category._id }).exec();
+            articles.sort((a, b) => a.createdAt - b.createdAt);
+            res.render('fin2', { articles, scores, videos });
         } catch (error) {
             console.log(error);
         }
@@ -155,7 +183,10 @@ class homeController {
                 return res.render('fin3', { articles: [] });
             }
             const articles = await Article.find({ categories: fin3Category._id }).sort({ createdAt: -1 }).populate([{ path: 'categories', select: 'name' }]).exec();
-            res.render('fin3', { articles });
+            const scores = await ScoresCource.find({ user: req.session.userId }).exec();
+            const videos = await VideoForCategory.find({ articleId: acc1Category._id }).exec();
+            articles.sort((a, b) => a.createdAt - b.createdAt);
+            res.render('fin3', { articles, scores, videos });
         } catch (error) {
             console.log(error);
         }
@@ -196,7 +227,6 @@ class homeController {
             let time = moment(article.createdAt).format('HH:mm');
             const title = article.slug;
             modules.sort((a, b) => a.createdAt - b.createdAt);
-            console.log(scores.score)
 
             // ارسال اطلاعات به صفحه جدید برای نمایش ماژول‌ها
             res.render('articleModules', { article, modules, date, time, videos, title, questions, scores });

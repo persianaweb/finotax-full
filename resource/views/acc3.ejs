@@ -6,7 +6,26 @@
         <p class="matn">سرفصل دوره پیشرفته حسابداری </p>
     </div>
 
+        <div class="videobox">
+        <% if (videos.length> 0) { %>
+            <% videos.forEach(video=> { %>
+                <video src="<%= video.videoPath %>" controls>
+                </video>
+                <% }) %>
+                    <% } else { %>
+                        <p>ویدیویی برای این مقاله ثبت نشده است.</p>
+                        <% } %>
+    </div>
+
     <div class="container">
+                <% let unlockedIndex=0; %>
+
+            <% articles.forEach((article, index)=> {
+                if (index === 0 || scores.some(score => score.article.toString() === articles[index -
+                1]._id.toString() && score.score >= 70)) {
+                unlockedIndex = index;
+                }
+                let unlocked = index <= unlockedIndex; %>
         <% articles.forEach((article,index)=>{ %>
             <a href="/article/<%= article.slug %>" class="flip-box">
                 <div class="flip-inner">

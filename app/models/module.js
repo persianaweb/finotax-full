@@ -5,7 +5,7 @@ const moduleSchema = mongoose.Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User' },
     title: { type: String, required: true },
     slug: { type: String, default: '' },
-    editor1: { type: String, required: true },
+    editor1: { type: String, default: '' }, 
     blogId: { type: mongoose.Schema.Types.ObjectId, ref: 'Article', required: true },
     viewCount: { type: Number, default: 0 },
     commentCount: { type: Number, default: 0 },

@@ -4,54 +4,53 @@
 <div class="content-main">
 
     <div class=" m-4  p-2 main-content">
-        
-            <div class="d-flex justify-content-center p-2 title">افزودن مطلب</div>
-            <form class="container" action="/admin/articles/create" method="POST" enctype="multipart/form-data"
-                novalidate>
-                <div class="images d-flex p-3 justify-content-around ">
-                    <div class="flip-card">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img id="imagePreview" src="/admin/images/upload.png" alt="Avatar"
-                                    style="width:100%;height:100%;">
-                            </div>
-                            <div class="flip-card-back d-flex flex-column justify-content-center align-items-center">
-                                <div class="new_Btn"><i class="fas fa-cloud-upload-alt "></i></div>
-                                <input type="file" id="imageInput" name="image" onchange="previewImage(event)"
-                                    accept="image/*">
-                                انتخاب تصویر اصلی محصول
-                                <p>اندازه تصاویر باید 300 در 300 پیکسل باشد</p> 
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
-                <div class="p-2 inf">
-                    <div class="d-flex justify-content-around align-items-center my-auto p-2 field">
-                        <div class="col-4 field-col">
-                            <label for="title" class="d-block">نام مطلب :</label>
-                            <input class="w-75 inputs" name="title" type="text" placeholder="نام محصول را وارد کنید">
+        <div class="d-flex justify-content-center p-2 title">افزودن مطلب</div>
+        <form class="container" action="/admin/articles/create" method="POST" enctype="multipart/form-data" novalidate>
+            <div class="images d-flex p-3 justify-content-around ">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img id="imagePreview" src="/admin/images/upload.png" alt="Avatar"
+                                style="width:100%;height:100%;">
                         </div>
-                        <div class="col-4 field-col">
-                            <label for="categories">دسته بندی :</label>
-                            <select name="categories" id="categories" class="form-control form-control-chosen p-1"
-                                data-placeholder="دسته بندی را انتخاب کنید" multiple>
-                                <% categories.forEach(category=>{ %>
-                                    <option value="<%- category.id %>"><%- category.name %></option>
-                                    <% })%>
-                            </select>
+                        <div class="flip-card-back d-flex flex-column justify-content-center align-items-center">
+                            <div class="new_Btn"><i class="fas fa-cloud-upload-alt "></i></div>
+                            <input type="file" id="imageInput" name="image" onchange="previewImage(event)"
+                                accept="image/*">
+                            انتخاب تصویر اصلی محصول
+                            <p>اندازه تصاویر باید 300 در 300 پیکسل باشد</p>
                         </div>
                     </div>
-                    <!-- <div class="p-2">
+                </div>
+
+            </div>
+            <div class="p-2 inf">
+                <div class="d-flex justify-content-around align-items-center my-auto p-2 field">
+                    <div class="col-4 field-col">
+                        <label for="title" class="d-block">نام مطلب :</label>
+                        <input class="w-75 inputs" name="title" type="text" placeholder="نام محصول را وارد کنید">
+                    </div>
+                    <div class="col-4 field-col">
+                        <label for="categories">دسته بندی :</label>
+                        <select name="categories" id="categories" class="form-control form-control-chosen p-1"
+                            data-placeholder="دسته بندی را انتخاب کنید" multiple>
+                            <% categories.forEach(category=>{ %>
+                                <option value="<%- category.id %>"><%- category.name %></option>
+                                <% })%>
+                        </select>
+                    </div>
+                </div>
+                <!-- <div class="p-2">
                         <label for="editor1" class="control-label font-weight-bold p-2">متن مطلب :</label>
                         <textarea name="editor1"></textarea>
                     </div> -->
 
-                    <div class="d-flex justify-content-start p-2">
-                        <button class="btn submit-btn" type="submit">ذخیره</button>
-                    </div>
+                <div class="d-flex justify-content-start p-2">
+                    <button class="btn submit-btn" type="submit">ذخیره</button>
                 </div>
-            </form>
+            </div>
+        </form>
 
     </div>
 </div>

@@ -33,7 +33,7 @@ class profileController {
                 articleSlug: answer.article.slug,
                 articleId: answer.article._id,
                 score: answer.score, 
-                correctAnswers: answer.correctAnswers,
+                correctAnswers: answer.correctAnswers, 
                 totalQuestions: answer.totalQuestions,
                 createdAt: answer.createdAt  
             }));

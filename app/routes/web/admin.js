@@ -30,6 +30,7 @@ const QuestionControllerForSingleModules = require('app/http/controllers/admin/Q
 const modulesController = require('app/http/controllers/admin/moduleController');
 const SubscriptionController = require('app/http/controllers/SubscriptionController');
 const videoformodules = require('app/http/controllers/VideoModulesController');
+const videoforCategory = require('app/http/controllers/VideoCategoryController');
 
 //AdminRoutes
 router.get('/', adminController.index);
@@ -96,6 +97,11 @@ router.post('/videos/:id/delete', articleController.deleteVideo);
 router.get('/uploadVideo-Modules', videoformodules.createVideo);
 router.post('/upload-video-Modules',  uploadVideo.single('video'), videoformodules.uploadVideo);
 router.post('/videos-Modules/:id/delete', videoformodules.deleteVideo);
+
+//Video categorys
+router.get('/uploadVideo-categorys', videoforCategory.createVideo);
+router.post('/upload-video-categorys',  uploadVideo.single('video'), videoforCategory.uploadVideo);
+router.post('/videos-categorys/:id/delete', videoforCategory.deleteVideo);
 
 //question Routes for all modules Routes  
 router.get('/question', QuestionController.index);

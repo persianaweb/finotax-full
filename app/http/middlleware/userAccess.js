@@ -12,7 +12,7 @@ module.exports = class AccessUserMiddleware {
       }
       res.locals.access = access;
       res.locals.users = users;
-      // console.log(user.name)
+      // console.log(user.name) 
       next();
     } catch (error) {
       next(error);

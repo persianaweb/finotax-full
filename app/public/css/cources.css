@@ -1,139 +1,146 @@
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column-reverse;
-    gap: 2px;
-    justify-content: center;
-    margin-bottom: auto;
-    margin-top: 0;
-    opacity: 0;
-    animation: intro-fade-container 2s ease-in-out 3s forwards;
-    padding-bottom: 100px;
-}
+    .videobox {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
-.flip-box {
-    position: relative;
-    top: 20%;
-    width: 340px;
-    min-height: 80px;
-    perspective: 1000px;
-}
+    video {
+        width: 94%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 24px;
+        margin: auto;
+        border: 3px solid #f4cb27;
+    }
 
-.flip-inner {
-    width: 100%;
-    min-height: 80px;
-    transition: transform 0.6s ease-in-out, max-height 0.6s ease-in-out;
-    transform-style: preserve-3d;
-    position: relative;
-}
+    .box{
+         overflow: auto;
+         width: 100%;
+         display: flex;
+         flex-direction: column;
+         align-items: self-start;
+         justify-content: start;
+          height: 50vh;
+    }
 
-.flip-front,
-.flip-back {
-    width: 100%;
-    position: absolute;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    border-radius: 10px;
-    box-sizing: border-box;
-}
-
-.flip-front {
-    background: darkblue;
-    min-height: 30px;
-    padding: 5px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: start;
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.flip-front div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: start;
-    margin-right: 10px;
-}
-
-
-
-.flip-front img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 6px;
-}
-
-.flip-front div img {
-    width: 14px;
-    height: auto !important;
-}
-
-.flip-front p {
-    margin-right: 6px;
-}
-
-.flip-back {
-    background: #333;
-    transform: rotateY(180deg);
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    text-align: right;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.6s ease-in-out;
-    padding: 15px 15px 100px 15px !important;
-    font-weight: bold;
-}
-
-
-.flip-back ul {
-    font-size: 16px;
-    font-weight: 600;
-    width: 100%;
-    padding: 0px 10px;
-}
-
-.flip-back li {
-    font-size: 14px;
-    font-weight: 400;
-    width: 100%;
-}
-
-.next {
-    width: 26px !important;
-    margin-right: auto;
-    margin-left: 0px;
-    animation: shake 1s ease-in-out infinite;
-}
-
-
-@keyframes intro-fade-container {
-    0% {
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+        align-items: self-start;
+        margin: 0px 0px auto 0px;
         opacity: 0;
+        animation: intro-fade-container 2s ease-in-out 3s forwards;
+        padding: 5px;
+        height: 50vh;
+        width: 100%;
     }
 
-    100% {
-        opacity: 1;
-    }
-}
 
-@keyframes shake {
-    0% {
+
+
+    .flip-inner {
+        width: 100%;
+        min-height: 80px;
+        transition: transform 0.6s ease-in-out, max-height 0.6s ease-in-out;
+        transform-style: preserve-3d;
+        position: relative;
+    }
+
+
+
+    .flip-front {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        padding: 10px 14px;
+        border-radius: 24px;
+        width: 180px;
+        margin: 20px auto;
+        text-align: center;
+        color: white;
+        font-size: 16px;
+        font-weight: 400;
+        background: rgb(14, 27, 138);
+        background: linear-gradient(120deg, rgba(14, 27, 138, 1) 0%, rgba(19, 15, 77, 1) 100%);
+        border: 1px solid #1C138A;
+    }
+
+
+    .flip-front img {
+        width: 160px;
+        height: 130px;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    .flip-front p {
+        font-size: 12px;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .flip-back {
+        background: #333;
+        transform: rotateY(180deg);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: right;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.6s ease-in-out;
+        padding: 15px 15px 100px 15px !important;
+        font-weight: bold;
+    }
+
+
+    .flip-back ul {
+        font-size: 16px;
+        font-weight: 600;
+        width: 100%;
+        padding: 0px 10px;
+    }
+
+    .flip-back li {
+        font-size: 14px;
+        font-weight: 400;
+        width: 100%;
+    }
+
+    .next {
+        width: 26px !important;
+        margin-right: auto;
         margin-left: 0px;
+        animation: shake 1s ease-in-out infinite;
     }
 
-    50% {
-        margin-left: 15px;
+
+    @keyframes intro-fade-container {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
     }
 
-    100% {
-        margin-left: 0px;
+    @keyframes shake {
+        0% {
+            margin-left: 0px;
+        }
+
+        50% {
+            margin-left: 15px;
+        }
+
+        100% {
+            margin-left: 0px;
+        }
     }
-}

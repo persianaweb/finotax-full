@@ -23,9 +23,19 @@ document.getElementById("down3").addEventListener("click", function() {
 });
 
 
+// document.getElementById("back").addEventListener("click", function (event) {
+//     event.preventDefault(); 
+//     window.history.back();
+// });
+
 document.getElementById("back").addEventListener("click", function (event) {
     event.preventDefault(); // جلوگیری از رفتار پیش‌فرض لینک
-    window.history.back();
+    window.history.back(); // بازگشت به صفحه قبل
+
+    // پس از 500 میلی‌ثانیه (نیم‌ثانیه) صفحه را ریفرش کن
+    setTimeout(function () {
+        window.location.reload();
+    }, 500);
 });
 
 
