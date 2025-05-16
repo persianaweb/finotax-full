@@ -7,13 +7,26 @@
     "theme_color": "#2196F3",
     "icons": [
         {
-            "src": "/public/images/finotax-icon-192",
+            "src": "/images/finotax-icon-192",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/public/images/finotax-icon-192",
+            "src": "/images/finotax-icon-192",
             "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/images/screenshot-desktop.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide"
+        },
+        {
+            "src": "/images/screenshot-mobile.png",
+            "sizes": "720x1280",
             "type": "image/png"
         }
     ]
