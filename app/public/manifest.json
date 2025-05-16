@@ -7,12 +7,12 @@
     "theme_color": "#2196F3",
     "icons": [
         {
-            "src": "/images/finotax-icon-192",
+            "src": "/public/images/finotax-icon-192",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/images/finotax-icon-192",
+            "src": "/public/images/finotax-icon-192",
             "sizes": "512x512",
             "type": "image/png"
         }
