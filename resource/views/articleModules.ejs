@@ -15,14 +15,14 @@
 
 
 
-    <div class="header flex-column" >
+    <div class="header flex-column" style="animation: none !important; margin-bottom: 0px; margin-top: 14px;">
         <!-- <h1 class="intro-fade" style="visibility: hidden;">ACCOUNTING</h1> -->
         <p class="matn">
             <%= article.title %>
         </p>
     </div>
 
-    <div class="videobox">
+    <div class="videobox" style="">
         <% if (videos.length> 0) { %>
             <% videos.forEach(video=> { %>
                 <video src="<%= video.videoPath %>" poster="<%- article.image %>" controls>

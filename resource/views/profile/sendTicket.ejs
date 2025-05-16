@@ -1,25 +1,26 @@
-<link rel="stylesheet" href="/css/profile.css">
+<link rel="stylesheet" href="/css/edit-profile.css">
+<link rel="stylesheet" href="/css/new-style.css">
 
-<div class="container main-section main">
-    <div class="d-flex flex-column section2 p-3">
-        <div class="w-100 title-section d-flex  justify-content-end align-items-center">
-            <span>ارسال تیکت جدید</span>
-            
-        </div>
-        <div class="d-flex flex-column m-auto fadeing w-100 justify-content-between align-items-center">
-            <form action="/mytickets-send" method="post" class="w-75 mt-3 send-form" novalidate>
-                <div class="form-group">
-                    <input name="title" class="form-control" placeholder="موضوع تیکت را بنویسید">
-                </div>
-                <div class="form-group">
-                    <textarea name="text" id="" cols="30" rows="10" placeholder="متن تیکت"></textarea>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn buttonformsabt w-25" style="margin-top: 0px;">ارسال</button>
-                </div>
-            </form>
-        </div>
+<div class="main-section main">
+    <div class="section1">
+        <a href="/profile/edit-profile/<%- users.id %>"><img src="/images/setting2.svg" alt="setting"></a>
+        <h1 style="font-size: 26px; text-align: center;">ثبت تیکت جدید</h1>
+        <a href="/auth/logout"><img src="/images/in.svg" alt="Loguot"></a>
+    </div>
+    <div class="form-section">
+        <form action="/mytickets-send" method="post" class="form-user" novalidate>
+            <div class="form-group">
+                <input name="title" class="form-control" placeholder="موضوع تیکت را بنویسید" style="background-color: whitesmoke;">
+            </div>
+            <div class="form-group">
+                <textarea name="text" id="" cols="50" rows="10" placeholder="متن تیکت"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="buttonformsabt" style="width: 100%; margin-top: 10px;">ارسال</button>
+            </div>
+        </form>
     </div>
 </div>
+
 
 <script src="/js/toggleMenu.js"></script>

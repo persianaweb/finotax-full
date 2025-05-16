@@ -1,21 +1,28 @@
+<link rel="stylesheet" href="/css/new-style.css">
 
 
 
+<div class="container main-section d-flex flex-row-reverse main">
 
-<section class="main flex-column">
+    <div class="section1">
+        <a href="/profile/edit-profile/<%- users.id %>"><img src="/images/setting2.svg" alt="setting"></a>
+        <h1 style="font-size: 26px;">تیکت های من</h1>
+        <a href="/auth/logout"><img src="/images/in.svg" alt="Loguot"></a>
+    </div>
+
     <div class="d-flex flex-column section2 p-3">
-        <div class="w-100 title-section d-flex flex-row-reverse justify-content-between align-items-center">
-            <span>تیکت های من</span>
-            <a href="/mytickets-send">
-                <button class="btn buttonformsabt mt-0 mb-0">ثبت تیکت جدید</button>
-            </a>
-        </div>
+
+        <a href="/mytickets-send" class="profile-btn">
+            <span>ثبت تیکت جدید</span>
+            <img src="/images/plus.svg" alt="">
+        </a>
+
         <% if(tickets.length> 0){ %>
-            <div class="w-100">
+            <div class="tabel-container">
                 <p class=" title-tickets">
                     برای مشاهده تیکت روی "موضوع تیکت" کلیک کنید
                 </p>
-                <table class="custom-table container">
+                <table class="custom-table">
                     <thead>
                         <tr>
                             <th>وضعیت تیکت</th>
@@ -38,8 +45,7 @@
                                             <% } %>
 
                                                 <td>
-                                                    <a href="/mytickets-view/<%- ticket.id %>"><%-ticket.title
-                                                            %></a>
+                                                    <a href="/mytickets-view/<%- ticket.id %>"><%-ticket.title %></a>
                                                 </td>
                                                 <td><%- ticket.code %></td>
                                 </tr>
@@ -49,12 +55,12 @@
                 </table>
             </div>
             <% }else{ %>
-                <div class="d-flex flex-column m-auto fadeing">
-                    <img class="img-fluid" src="/image/objects/empty-notification.svg " alt="">
-                    <p>درحال حاضر تیکتی ندارید</p>
+                <div class="img-empty">
+                    <p>درحال حاضر تیکتی ارسال نکرده اید</p>
+                    <img class="img-fluid" src="/images/emptyobj.webp " alt="">
                 </div>
                 <% } %>
     </div>
-</section>
+</div>
 
 <script src="/js/toggleMenu.js"></script>

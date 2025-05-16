@@ -120,12 +120,12 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    overflow-x: auto; 
-    overflow-y: hidden; 
+    overflow-x: auto;
+    overflow-y: hidden;
     flex-wrap: nowrap;
     gap: 10px;
     padding: 10px 14px;
-    white-space: nowrap; 
+    white-space: nowrap;
     text-align: center;
 }
 
@@ -144,7 +144,7 @@
     overflow: hidden;
     background: rgb(51, 202, 127);
     background: linear-gradient(360deg, rgba(51, 202, 127, 1) 0%, rgba(19, 15, 77, 1) 100%);
-    flex-shrink: 0; 
+    flex-shrink: 0;
 }
 
 .point-course-red {
@@ -166,12 +166,14 @@
     width: 100%;
     white-space: nowrap;
 }
-.pay-form{
+
+.pay-form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.pay-btn{
+
+.pay-btn {
     width: 94%;
     margin: auto;
     height: 80px;
@@ -181,4 +183,119 @@
     border-radius: 24px;
     background: rgb(51, 202, 127);
     background: linear-gradient(360deg, rgba(51, 202, 127, 1) 0%, rgba(19, 15, 77, 1) 100%);
+}
+
+.img-empty {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+.img-empty img {
+    width: 50%;
+    opacity: 0.6;
+    margin: auto;
+}
+
+.tabel-container {
+    width: 100%;
+}
+
+.title-tickets {
+    width: 100%;
+    text-align: center;
+    color: greenyellow;
+
+}
+
+.custom-table {
+    width: 98%;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 14px;
+}
+
+thead {
+    background-color: aquamarine;
+
+}
+
+tr,
+th,
+td {
+    text-align: center;
+}
+
+tbody {
+    background-color: white;
+}
+
+.ticket-box {
+    width: 98%;
+    margin: auto;
+    height: 80vh;
+    position: relative;
+}
+
+.ticket-title {
+    font-size: 22px;
+    color: aqua;
+    text-align: right;
+}
+
+.send-box {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sub-btn {
+    width: 15%;
+    border-radius: 14px;
+    background-color: #33CA7F;
+    padding: 4px 0px 4px 0px;
+}
+
+.sub-btn img {
+    width: 80%;
+}
+
+.text-box {
+    width: 85%;
+    background-color: white;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 14px;
+    color: #1C138A;
+}
+
+.clint-chat {
+    margin-top: 10px;
+    width: 80%;
+    margin-left: auto;
+    padding: 5px;
+    font-size: 14px;
+    background-color: white;
+    color: #1C138A;
+    border-radius: 50px 0px 50px 50px;
+    border: 2px solid #1C138A;
+    text-align: justify;
+}
+
+.admin-chat {
+    margin-top: 10px;
+    width: 80%;
+    margin-right: auto;
+    padding: 5px;
+    font-size: 14px;
+    background-color: #1C138A;
+    color: white;
+    border-radius: 0px 50px 50px 50px;
+    border: 2px solid white;
+    text-align: justify;
 }

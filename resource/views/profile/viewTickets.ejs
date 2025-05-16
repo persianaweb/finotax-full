@@ -1,47 +1,50 @@
-<link rel="stylesheet" href="/css/profile.css">
+<link rel="stylesheet" href="/css/new-style.css">
 
-<div class="container main-section d-flex flex-row-reverse">
- 
-    <div class="d-flex flex-column section2 p-3">
-        <div class="w-100 title-section d-flex  justify-content-end align-items-center">
-            <span><%- ticket.code %></span>
-            <span class="ml-1 mr-auto">: شماره تیکت</span>
+<div class="main-section main">
+    <div class="section1">
+        <a href="/profile/edit-profile/<%- users.id %>"><img src="/images/setting2.svg" alt="setting"></a>
+        <h1 style="font-size: 22px; text-align: center;">شماره تیکت : <%- ticket.code %> </h1>
+        <a href="/auth/logout"><img src="/images/in.svg" alt="Loguot"></a>
+    </div>
+
+    <div class="ticket-box">
+        <div class="ticket-title">
+            <span class="ml-1">موضوع :</span>
             <span><%- ticket.title %></span>
-            <span class="ml-1">: موضوع تیکت</span>
         </div>
-        <div class="d-flex flex-column fadeing w-100 justify-content-end align-items-center p-1">
-            <div class="clint-chat">
+        <div class="clint-chat">
+            <div>
                 <%- ticket.text %>
             </div>
         </div>
         <% parent.forEach(par=>{ %>
             <% if(par.title==='Admin' ){ %>
-                <div class="d-flex flex-column fadeing w-100 justify-content-end align-items-center p-1">
-                    <div class="admin-chat">
+                <div  class="admin-chat">
+                    <div>
                         <span><%- par.title %> : </span>
                         <%- par.text %>
                     </div>
                 </div>
                 <% } %>
                     <% if(par.title==='Client' ){ %>
-                        <div class="d-flex flex-column fadeing w-100 justify-content-end align-items-center p-1">
-                            <div class="clint-chat">
+                        <div class="clint-chat">
+                            <div>
                                 <%- par.text %>
                             </div>
                         </div>
                         <% } %>
                             <% }) %>
-                            <% if(ticket.check){ %>
-                                <form action="/replay-send" method="post"
-                                    class="d-flex justify-content-between align-items-center mt-auto send-box">
-                                    <input type="hidden" name="parent" value="<%- ticket.code %>">
-                                    <input type="hidden" name="codeNumber" value="<%- ticket.code %>">
-                                    <button class="btn" type="submit">
-                                        <i class="fas fa-location-arrow"></i>
-                                    </button>
-                                    <input type="text" placeholder="... پاسخ خود را بنویسید" name="text">
-                                </form>
-                                <% } %>
+                                <% if(ticket.check){ %>
+                                    <form action="/replay-send" method="post" class="send-box">
+                                        <input type="hidden" name="parent" value="<%- ticket.code %>">
+                                        <input type="hidden" name="codeNumber" value="<%- ticket.code %>">
+                                        <button class="sub-btn" type="submit">
+                                            <img src="/images/telegramwhite.webp" alt="">
+                                        </button>
+                                        <input class="text-box" type="text" placeholder="پاسخ خود را بنویسید ..."
+                                            name="text">
+                                    </form>
+                                    <% } %>
     </div>
 </div>
 

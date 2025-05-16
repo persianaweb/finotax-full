@@ -5,7 +5,7 @@ class categoryController {
     constructor() {
         this.storeArticle = this.storeArticle.bind(this);
         this.updateArticle = this.updateArticle.bind(this);
-        this.updateProcessArticle = this.updateProcessArticle.bind(this);
+        this.updateProcessArticle = this.updateProcessArticle.bind(this); 
         
     }
 

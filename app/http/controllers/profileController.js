@@ -4,7 +4,8 @@ const Tickets = require('app/models/tickets');
 const autoBind = require('auto-bind');
 const axios = require('axios');
 const Subscription = require('app/models/Subscription');
-const Answer = require('app/models/QuizResult');
+const QuizResult = require('app/models/QuizResult');
+const QuizResultForModules = require('app/models/QuizResultForModules');
 const Article = require('app/models/articles')
 const moment = require('moment-jalaali');
 const fs = require('fs');
@@ -19,46 +20,44 @@ class profileController {
             const user = await User.findById(req.session.userId).populate('subscription');
 
             if (!user || !user.subscription) {
+                return res.json(user);
                 return res.render('profile/index', { user: null });
             }
 
-            // دریافت پاسخ‌های کاربر
-            const answers = await Answer.find({ user: user._id })
-                .populate('article' , 'title slug')
+
+            const articleAnswers = await QuizResult.find({ user: user._id })
+                .populate('article', 'title slug')
                 .exec();
 
-            // ساخت آرایه‌ای از اطلاعات مورد نیاز
-            const userAnswers = answers.map(answer => ({ 
-                articleTitle: answer.article.title,
-                articleSlug: answer.article.slug,
-                articleId: answer.article._id,
-                score: answer.score, 
-                correctAnswers: answer.correctAnswers, 
-                totalQuestions: answer.totalQuestions,
-                createdAt: answer.createdAt  
-            }));
+            const moduleAnswers = await QuizResultForModules.find({ user: user._id })
+                .populate('article', 'title slug')
+                .exec();
 
-            const remainingDays = moment(user.subscriptionEndDate).diff(moment(), 'days');     
 
-            // return res.json(userAnswers );
+            const remainingDays = user.subscriptionEndDate
+                ? moment(user.subscriptionEndDate).diff(moment(), 'days')
+                : 0;
+
+            // return res.json(articleAnswers);
 
             res.render('profile/index', {
-                user,userAnswers,
+                user,
+                articleAnswers,
+                moduleAnswers,
                 subscription: user.subscription,
-                remainingDays: remainingDays > 0 ? remainingDays : 0 
-                  
+                remainingDays: remainingDays > 0 ? remainingDays : 0
             });
 
         } catch (err) {
             console.error(err);
-            res.status(500).send("خطایی رخ داده است."); 
+            res.status(500).send("خطایی رخ داده است.");
         }
     }
 
 
 
     async tickets(req, res) {
-        const title = 'webinja | تیکت های من';
+        const title = 'finotax | تیکت های من';
         let mobile = req.session.mobile || false;
         let rCode = req.session.rCode || false;
         req.session.mobile = false;

@@ -5,17 +5,23 @@ const User = require('app/models/users');
 
 class adminTicketController {
     constructor() {
-        autoBind(this); 
+        autoBind(this);
     }
     async index(req, res) {
         const title = 'tickets';
         // const tickets = await Tickets.paginate({}, {
         //     limit: 100000, sort: { createAt: -1 }, populate: [{
-        //         path: 'user',
+        //         path: 'user', 
         //         select: 'mobileNumber'
         //     }]
         // })
         const tickets = await Tickets.find({}).populate('user');
+        tickets.forEach(ticket => {
+            if (!ticket.user) {
+                ticket.user = { mobileNumber: "نامشخص" };
+            }
+        });
+
         // return res.json(tickets);
         res.render('admin/tickets/index', { title, tickets });
     }

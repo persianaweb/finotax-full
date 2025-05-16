@@ -10,7 +10,7 @@
         <% if(users.image){ %>
             <img src="<%- users.image %>" alt="user image">
             <% }else{ %>
-                <img src="/images/No_Image_Available.jpg" alt="user image"> 
+                <img src="/images/No_Image_Available.jpg" alt="user image">
                 <% } %>
                     <div>
                         <% if(users.image){ %>
@@ -74,33 +74,64 @@
                     <span>مشاهده تیکت ها</span>
                     <img class="arr" src="/images/arr.svg" alt="">
                 </a>
-
+                <div style="color: white; margin-right: 10px;">نتایج آزمون هر بخش از دوره ها:</div>
                 <section class="point-section">
-                    <% if (userAnswers && userAnswers.length> 0) { %> 
-                        <% userAnswers.forEach(answer=> { %>
+                    <% if (articleAnswers && articleAnswers.length> 0) { %>
+                        <% articleAnswers.forEach(answer=> { %>
                             <% if (answer.score< 100) { %>
-                                <a href="/article/<%= answer.articleSlug %>" class="point-course-red">
+                                <a href="/article/<%= answer.article.slug %>" class="point-course-red">
                                     <div>
                                         100/<%= answer.score %>
                                     </div>
                                     <h6>
-                                        <%= answer.articleTitle %>
+                                        <%= answer.article.title %>
                                     </h6>
                                 </a>
-                            <% }else{%>
-                                <a href="/article/<%= answer.articleSlug %>" class="point-course">
-                                    <div>
-                                        100/<%= answer.score %>
-                                    </div>
-                                    <h6>
-                                        <%= answer.articleTitle %>
-                                    </h6>
-                                </a>
-                                <% } %>
-                            <% }) %>
                                 <% }else{%>
-                                    در حال حاظر در آزمونی شرکت نکرده اید
-                                    <% }%>
+                                    <a href="/article/<%= answer.article.slug %>" class="point-course">
+                                        <div>
+                                            100/<%= answer.score %>
+                                        </div>
+                                        <h6>
+                                            <%= answer.article.title %>
+                                        </h6>
+                                    </a>
+                                    <% } %>
+                                        <% }) %>
+                                            <% }else{%>
+                                                در حال حاظر در آزمونی شرکت نکرده اید
+                                                <% }%>
+
+
+                </section>
+
+                <div style="color: white; margin-right: 10px;">نتایج آزمون هر ماژول از بخش ها:</div>
+                <section class="point-section" style="margin-bottom: 100px;">
+                    <% if (moduleAnswers && moduleAnswers.length> 0) { %>
+                        <% moduleAnswers.forEach(answer=> { %>
+                            <% if (answer.score< 100) { %>
+                                <a href="/module/<%= answer.article.slug %>" class="point-course-red">
+                                    <div>
+                                        100/<%= answer.score %>
+                                    </div>
+                                    <h6>
+                                        <%= answer.article.title %>
+                                    </h6>
+                                </a>
+                                <% }else{%>
+                                    <a href="/module/<%= answer.article.slug %>" class="point-course">
+                                        <div>
+                                            100/<%= answer.score %>
+                                        </div>
+                                        <h6>
+                                            <%= answer.article.title %>
+                                        </h6>
+                                    </a>
+                                    <% } %>
+                                        <% }) %>
+                                            <% }else{%>
+                                                در حال حاظر در آزمونی شرکت نکرده اید
+                                                <% }%>
 
 
                 </section>
