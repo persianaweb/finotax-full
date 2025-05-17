@@ -52,9 +52,9 @@ class homeController {
 
             res.render('acc1', { articles, scores, videos });
         } catch (error) {
-            console.log(error); 
+            console.log(error);
         }
- 
+
     }
 
     async acc2(req, res) {
@@ -193,9 +193,18 @@ class homeController {
 
     }
 
-    async acctest1(req, res) {
+    async website(req, res) {
         try {
-            res.render('acc1test');
+            res.render('website/index');
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
+    async service(req, res) {
+        try {
+            res.render('website/services');
         } catch (error) {
             console.log(error);
         }

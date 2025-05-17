@@ -45,7 +45,7 @@ router.post('/profile/edit-profile', upload.single('image'), fileToField.handle,
 
 //acc1
 router.get('/acc1', homeController.acc1);
-router.get('/acc1test', homeController.acctest1);
+// router.get('/acc1test', homeController.acctest1);
 
 //acc2
 router.get('/acc2', homeController.acc2);
@@ -78,10 +78,10 @@ router.get('/fin3', homeController.fin3);
 // router.get('/acc1test', homeController.acctest1);
 
 
-
-
 router.get('/learn/keywords', keywordsController.keywordsPage);
 
-
+//website routes
+router.get('/website', homeController.website);
+router.get('/service', homeController.service);
 
 module.exports = router;
