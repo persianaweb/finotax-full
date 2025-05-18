@@ -3,6 +3,10 @@
 
 <div class="content-main">
     <div class=" m-4  p-2 main-content">
+
+        <progress id="uploadProgress" value="0" max="100"></progress>
+        <p id="progressText">0%</p>
+
         <div class="d-flex justify-content-center p-2 title">افزودن ویدیو</div>
         <form class="container" action="/admin/upload-video-Modules" method="POST" enctype="multipart/form-data">
             <label class="d-block" for="article">انتخاب مقاله:</label>
@@ -15,7 +19,8 @@
             </select>
 
             <label class="d-block" for="video">انتخاب ویدیو:</label>
-            <input class="inputs w-75" type="file" name="video" id="video" accept="video/mp4,video/mkv,video/webm" required>
+            <input class="inputs w-75" type="file" name="video" id="video" accept="video/mp4,video/mkv,video/webm"
+                required>
 
             <button class="btn submit-btn" type="submit">آپلود ویدیو</button>
         </form>
@@ -31,3 +36,33 @@
 <script src="/admin/js/imageInput.js"></script>
 <script src="/admin/js/chosen.js"></script>
 <script src="/admin/js/ckeditor.js"></script>
+<script>
+    document.querySelector("form").addEventListener("submit", function (e) {
+        e.preventDefault(); // جلوگیری از ارسال فرم به‌صورت سنتی
+
+        let formData = new FormData(this); // دریافت داده‌های فرم
+        let xhr = new XMLHttpRequest();
+
+        xhr.open("POST", "/admin/upload-video-Modules", true);
+
+        xhr.upload.onprogress = function (event) {
+            if (event.lengthComputable) {
+                let percent = Math.round((event.loaded / event.total) * 100);
+                document.getElementById("uploadProgress").value = percent;
+                document.getElementById("progressText").innerText = percent + "%";
+            }
+        };
+
+        xhr.onload = function () {
+            if (xhr.status == 200) {
+                alert("آپلود با موفقیت انجام شد!");
+                document.getElementById("uploadProgress").value = 0;
+                document.getElementById("progressText").innerText = "0%";
+            } else {
+                alert("خطا در آپلود ویدیو!");
+            }
+        };
+
+        xhr.send(formData);
+    });
+</script>

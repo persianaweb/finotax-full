@@ -23,7 +23,7 @@ class videoModulesController {
             // return res.json(category);
             res.render('admin/videosCategory/create', { title, category, videos, massages: req.flash('errors') });
         } catch (error) {
-            console.log(error)
+            console.log(error) 
         }
     }
 

@@ -95,7 +95,7 @@ router.post('/videos/:id/delete', articleController.deleteVideo);
 
 //Video Modules
 router.get('/uploadVideo-Modules', videoformodules.createVideo);
-router.post('/upload-video-Modules',  uploadVideo.single('video'), videoformodules.uploadVideo);
+router.post('/upload-video-Modules',  uploadVideo.single('video'), videoformodules.uploadVideo); 
 router.post('/videos-Modules/:id/delete', videoformodules.deleteVideo);
 
 //Video categorys
