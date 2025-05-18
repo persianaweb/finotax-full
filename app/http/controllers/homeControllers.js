@@ -8,6 +8,7 @@ const ScoresCource = require('app/models/QuizResult');
 const VideoForCategory = require('app/models/videoForCategory');
 const VideoCource = require('app/models/video');
 const VideoModule = require('app/models/videoForModules');
+const Keyword = require('app/models/keywords');
 const autoBind = require('auto-bind');
 const moment = require('moment-jalaali');
 moment.loadPersian({ usePersianDigits: true, dialect: 'persian-modern' });

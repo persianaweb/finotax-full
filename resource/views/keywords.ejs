@@ -1,26 +1,24 @@
-<link rel="stylesheet" href="/css/cources.css">
-<link rel="stylesheet" href="/css/new-style.css">
+<link rel="stylesheet" href="/css/keywords.css">
 
-<section class="main flex-column">
-    <div class="header flex-column">
-        <h1 class="intro-fade" style="white-space: nowrap; font-size: 45px;">Specialized Words</h1>
-        <p class="matn" style="font-size: 20px;">کلمات تخصصی</p>
-    </div>
-
-    <div class="container tabel-container" style=" margin-bottom: 500;">
-        <table class="custom-table">
+<section class="main-keywords">
+    
+    <div class="keywords-container">
+        <img src="/images/keywords.webp" alt="">
+        <table class="keywords-table">
             <thead>
                 <tr>
                     <th>عنوان کلمه</th>
+                    <th></th>
                     <th>معنای کلمه</th>
                 </tr>
             </thead>
             <% keywords.forEach(keyword=>{ %>
-            <tbody>
+                <tbody>
                     <tr>
                         <td>
                             <%= keyword.name %>
                         </td>
+                        <td>:</td>
                         <td><%- keyword.meaning %></td>
                     </tr>
                 </tbody>
@@ -28,4 +26,3 @@
         </table>
     </div>
 </section>
-<!-- <script src="/js/flip-box.js"></script> -->

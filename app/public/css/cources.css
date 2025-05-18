@@ -34,7 +34,7 @@
         align-items: self-start;
         margin: 0px 0px auto 0px;
         opacity: 0;
-        animation: intro-fade-container 2s ease-in-out 3s forwards;
+        animation: intro-fade-container 1s ease-in-out 2s forwards;
         padding: 5px;
         height: 50vh;
         width: 100%;
