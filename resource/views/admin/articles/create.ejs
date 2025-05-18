@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/admin/css/add-product.css">
+<link rel="stylesheet" href="/admin/css/add-product.css"> 
 <link rel="stylesheet" href="/admin/css/component-chosen.min.css">
 
 <div class="content-main">
@@ -26,14 +26,14 @@
 
             </div>
             <div class="p-2 inf">
-                <div class="d-flex justify-content-around align-items-center my-auto p-2 field">
+                <div class="d-flex justify-content-around align-items-center my-auto p-2 field"> 
                     <div class="col-4 field-col">
                         <label for="title" class="d-block">نام مطلب :</label>
                         <input class="w-75 inputs" name="title" type="text" placeholder="نام محصول را وارد کنید">
                     </div>
                     <div class="col-4 field-col">
-                        <label for="categories">دسته بندی :</label>
-                        <select name="categories" id="categories" class="form-control form-control-chosen p-1"
+                        <label for="title" for="categories">دسته بندی :</label>
+                        <select name="categories" id="categories" class="form-control form-control-chosen p-1 "
                             data-placeholder="دسته بندی را انتخاب کنید" multiple>
                             <% categories.forEach(category=>{ %>
                                 <option value="<%- category.id %>"><%- category.name %></option>

@@ -5,18 +5,18 @@
 
     <div class=" m-4  p-2 main-content">
 
-        <h2>ویرایش اشتراک </h2>
-        <form action="/admin/subscription/edit/<%- subscriptions._id %>" method="POST">
-            <label for="name">نام اشتراک:</label>
-            <input type="text" id="name" name="name" value="<%- subscriptions.name %>" required>
+        <div class="d-flex justify-content-center p-2 title">ویرایش اشتراک </div>
+        <form class="container" action="/admin/subscription/edit/<%- subscriptions._id %>" method="POST">
+            <label class="d-block" for="name">نام اشتراک:</label>
+            <input class="inputs w-75" type="text" id="name" name="name" value="<%- subscriptions.name %>" required>
     
-            <label for="duration">مدت‌زمان (ماه):</label>
-            <input type="number" id="duration" name="duration" value="<%- subscriptions.duration %>" required>
+            <label class="d-block" for="duration">مدت‌زمان (ماه):</label>
+            <input class="inputs w-75" type="number" id="duration" name="duration" value="<%- subscriptions.duration %>" required>
     
-            <label for="price">قیمت (تومان):</label>
-            <input type="number" id="price" name="price" value="<%- subscriptions.price %>"  required>
+            <label class="d-block" for="price">قیمت (تومان):</label>
+            <input class="inputs w-75" type="number" id="price" name="price" value="<%- subscriptions.price %>"  required>
     
-            <button type="submit">ویرایش اشتراک</button>
+            <button class="btn submit-btn" type="submit">ویرایش اشتراک</button>
         </form>
 
     </div>

@@ -1,11 +1,12 @@
 <link rel="stylesheet" href="/admin/css/add-product.css">
+<link rel="stylesheet" href="/admin/css/component-chosen.min.css">
 
 <div class="content-main">
     <div class=" m-4  p-2 main-content">
         <div class="d-flex justify-content-center p-2 title">افزودن ویدیو</div>
-        <form action="/admin/upload-video" method="POST" enctype="multipart/form-data">
-            <label for="article">انتخاب مقاله:</label>
-            <select name="articleId" id="article" required>
+        <form class="container" action="/admin/upload-video" method="POST" enctype="multipart/form-data">
+            <label class="d-block" for="article">انتخاب مقاله:</label>
+            <select class="form-control form-control-chosen p-1" name="articleId" id="article" required>
                 <% articles.forEach(article=> { %>
                     <option value="<%= article._id %>">
                         <%= article.title %>
@@ -13,13 +14,20 @@
                     <% }); %>
             </select>
 
-            <label for="video">انتخاب ویدیو:</label>
-            <input type="file" name="video" id="video" accept="video/mp4,video/mkv,video/webm" required>
+            <label class="d-block" for="video">انتخاب ویدیو:</label>
+            <input class="inputs w-75" type="file" name="video" id="video" accept="video/mp4,video/mkv,video/webm" required>
 
-            <button type="submit">آپلود ویدیو</button>
+            <button class="btn submit-btn" type="submit">آپلود ویدیو</button>
         </form>
 
 
 
     </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.6/chosen.jquery.min.js"></script>
+<script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+<script src="/admin/js/imagePreview.js"></script>
+<script src="/admin/js/imageInput.js"></script>
+<script src="/admin/js/chosen.js"></script>
+<script src="/admin/js/ckeditor.js"></script>

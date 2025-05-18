@@ -10,8 +10,8 @@
 
         <form class="container" action="/admin/question-modules/edit/<%= questions._id %>" method="POST">
             <!-- انتخاب مقاله -->
-            <label for="blogId">انتخاب دوره مورد نظر:</label>
-            <select name="blogId" required>
+            <label class="d-block" for="blogId">انتخاب دوره مورد نظر:</label>
+            <select class="form-control form-control-chosen p-1" name="blogId" required>
                 <% blogs.forEach(blog=> { %>
                     <option value="<%- blog.id %>" <%=questions.blogId && questions.blogId.toString()===blog.id.toString()
                         ? 'selected' : '' %> >
@@ -21,42 +21,42 @@
             </select>
 
             <!-- سوال -->
-            <label for="questionText">متن سوال:</label>
-            <input type="text" name="questionText" value="<%- questions.questionText %>" required>
+            <label class="d-block" for="questionText">متن سوال:</label>
+            <input class="inputs w-75" type="text" name="questionText" value="<%- questions.questionText %>" required>
 
             <!-- گزینه‌ها -->
-            <label>گزینه‌ها:</label>
+            <label class="d-block">گزینه‌ها:</label>
             <% if (questions.options && questions.options.length > 0) { %>
                 <% questions.options.forEach((option, index) => { %>
-                    <input type="text" name="options[]" value="<%- option %>" required>
+                    <input class="inputs w-75" type="text" name="options[]" value="<%- option %>" required>
                 <% }) %>
             <% } else { %>
                 <!-- اگر سوال جدید باشد و هنوز گزینه‌ای نداشته باشد -->
-                <input type="text" name="options[]" required>
-                <input type="text" name="options[]" required>
-                <input type="text" name="options[]" required>
-                <input type="text" name="options[]" required>
+                <input class="inputs w-75" type="text" name="options[]" required>
+                <input class="inputs w-75" type="text" name="options[]" required>
+                <input class="inputs w-75" type="text" name="options[]" required>
+                <input class="inputs w-75" type="text" name="options[]" required>
             <% } %>
 
                         <!-- توضیح گزینه ها -->
-                        <label>گزینه‌ها:</label>
+                        <label class="d-block">گزینه‌ها:</label>
                         <% if (questions.optionsText && questions.optionsText.length > 0) { %>
                             <% questions.optionsText.forEach((option, index) => { %>
-                                <input type="text" name="optionsText[]" value="<%- option %>" required>
+                                <input class="inputs w-75" type="text" name="optionsText[]" value="<%- option %>" required>
                             <% }) %>
                         <% } else { %>
                             <!-- اگر سوال جدید باشد و هنوز گزینه‌ای نداشته باشد -->
-                            <input type="text" name="optionsText[]" required>
-                            <input type="text" name="optionsText[]" required>
-                            <input type="text" name="optionsText[]" required>
-                            <input type="text" name="optionsText[]" required>
+                            <input class="inputs w-75" type="text" name="optionsText[]" required>
+                            <input class="inputs w-75" type="text" name="optionsText[]" required>
+                            <input class="inputs w-75" type="text" name="optionsText[]" required>
+                            <input class="inputs w-75" type="text" name="optionsText[]" required>
                         <% } %>
 
             <!-- انتخاب گزینه صحیح -->
-            <label for="correctAnswer">گزینه صحیح (عدد بین 0 تا 3):</label>
-            <input type="number" name="correctAnswer" min="0" max="3" value="<%- questions.correctAnswer %>" required>
+            <label class="d-block" for="correctAnswer">گزینه صحیح (عدد بین 0 تا 3):</label>
+            <input class="inputs w-75" type="number" name="correctAnswer" min="0" max="3" value="<%- questions.correctAnswer %>" required>
 
-            <button type="submit">ویرایش سوال</button>
+            <button class="btn submit-btn" type="submit">ویرایش سوال</button>
         </form>
 
     </div>

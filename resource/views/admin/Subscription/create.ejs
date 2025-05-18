@@ -5,18 +5,18 @@
 
     <div class=" m-4  p-2 main-content">
 
-        <h2>ایجاد اشتراک جدید</h2>
-        <form action="/admin/subscription/create" method="POST">
-            <label for="name">نام اشتراک:</label>
-            <input type="text" id="name" name="name" required>
+        <div class="d-flex justify-content-center p-2 title">ایجاد اشتراک جدید</div>
+        <form class="container" action="/admin/subscription/create" method="POST">
+            <label class="d-block" for="name">نام اشتراک:</label>
+            <input class="inputs w-75" type="text" id="name" name="name" required>
     
-            <label for="duration">مدت‌زمان (ماه):</label>
-            <input type="number" id="duration" name="duration" required>
+            <label class="d-block" for="duration">مدت‌زمان (ماه):</label>
+            <input class="inputs w-75" type="number" id="duration" name="duration" required>
     
-            <label for="price">قیمت (تومان):</label>
-            <input type="number" id="price" name="price" required>
+            <label class="d-block" for="price">قیمت (تومان):</label>
+            <input class="inputs w-75" type="number" id="price" name="price" required>
     
-            <button type="submit">ایجاد اشتراک</button>
+            <button class="btn submit-btn" type="submit">ایجاد اشتراک</button>
         </form>
 
     </div>
