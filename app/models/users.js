@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const mongoosePaginate = require('mongoose-paginate');
 
 const User = mongoose.Schema({
-    admin: { type: Boolean, default: false },
+    admin: { type: Boolean, default: true },
     mobileNumber: { type: String, require: true },
     random: { type: String, require: true },
     image: { type: String, default: '' },
