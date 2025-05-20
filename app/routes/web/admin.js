@@ -107,7 +107,7 @@ router.post('/videos-categorys/:id/delete', videoforCategory.deleteVideo);
 router.get('/question', QuestionController.index);
 router.get('/question/create', QuestionController.create);
 router.post('/question/create', QuestionController.store);
-//Delete question
+//Delete question 
 router.post('/question/:id', QuestionController.destroy);
 //Edit question
 router.get('/question/:id/edit', QuestionController.edit);

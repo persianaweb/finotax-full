@@ -12,7 +12,7 @@ class QuestionController {
         try {
             const title = 'modules Create';
             const blogs = await Articles.find();
-            res.render('admin/modules/create', { title, blogs });
+            res.render('admin/Modules/create', { title, blogs });
         } catch (error) {
             console.log(error);
         }
