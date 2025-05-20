@@ -14,41 +14,43 @@
         <p class="matn">سرفصل دوره مقدماتی حسابداری </p>
     </div>
 
-    <div class="videobox">
-        <% if (videos.length> 0) { %>
-            <% videos.forEach(video=> { %>
-                <video src="<%= video.videoPath %>" controls>
-                </video>
-                <% }) %>
-                    <% } else { %>
-                        <p>ویدیویی برای این مقاله ثبت نشده است.</p>
-                        <% } %>
-    </div>
-
-    <div class="container">
-        <% let unlockedIndex=0; %>
-
-            <% articles.forEach((article, index)=> {
-                if (index === 0 || scores.some(score => score.article.toString() === articles[index -
-                1]._id.toString() && score.score >= 70)) {
-                unlockedIndex = index;
-                }
-                let unlocked = index <= unlockedIndex; %>
-                    <a href="/article/<%= article.slug %>" class="flip-box <%= unlocked ? '' : 'disabled' %>">
-                        <div class="flip-inner">
-                            <div class="flip-front">
-                                <img src="<%= article.image %>" alt="<%= article.title %>">
-                                <span class="num">بخش <%= index + 1 %></span>
-                                <div>
-                                    <p>
-                                        <%= article.title %>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+    <% if (videos) { %>
+        <div class="videobox">
+            <% if (videos.length> 0) { %>
+                <% videos.forEach(video=> { %>
+                    <video src="<%= video.videoPath %>" controls>
+                    </video>
                     <% }) %>
-    </div>
+                        <% } else { %>
+                            <p>ویدیویی برای این مقاله ثبت نشده است.</p>
+                            <% } %>
+        </div>
+        <% } %>
+
+            <div class="container">
+                <% let unlockedIndex=0; %>
+
+                    <% articles.forEach((article, index)=> {
+                        if (index === 0 || scores.some(score => score.article.toString() === articles[index -
+                        1]._id.toString() && score.score >= 70)) {
+                        unlockedIndex = index;
+                        }
+                        let unlocked = index <= unlockedIndex; %>
+                            <a href="/article/<%= article.slug %>" class="flip-box <%= unlocked ? '' : 'disabled' %>">
+                                <div class="flip-inner">
+                                    <div class="flip-front">
+                                        <img src="<%= article.image %>" alt="<%= article.title %>">
+                                        <span class="num">بخش <%= index + 1 %></span>
+                                        <div>
+                                            <p>
+                                                <%= article.title %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <% }) %>
+            </div>
 
 </section>
 
