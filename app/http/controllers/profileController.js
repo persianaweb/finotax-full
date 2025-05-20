@@ -20,7 +20,7 @@ class profileController {
             const user = await User.findById(req.session.userId).populate('subscription');
 
             if (!user || !user.subscription) {
-                return res.json(user);
+                // return res.json(user);
                 return res.render('profile/index', { user: null });
             }
 
