@@ -38,28 +38,29 @@ class homeController {
     }
 
 
-    async acc1(req, res) {
-        try {
-            const acc1Category = await Category.findOne({ slug: 'آموزش-مقدماتی-حسابداری' }).exec();
-            if (!acc1Category) {
-                return res.render('acc1', { articles: [] });
-            }
-            const articles = await Article.find({ categories: acc1Category._id }).sort({ createdAt: -1 }).populate([{ path: 'categories', select: 'name' }]).exec();
-            const scores = await ScoresCource.find({ user: req.session.userId }).exec();
-
-            const videos = await VideoForCategory.find({ articleId: acc1Category._id }).exec();
-            articles.sort((a, b) => a.createdAt - b.createdAt);
-             if (!acc1Category) {
-                return res.render('acc1', {videos:[], articles: [] });
-            }
-            // return res.json(videos)ک
-
-            res.render('acc1', { articles, scores, videos });
-        } catch (error) {
-            console.log(error);
+async acc1(req, res) {
+    try {
+        const acc1Category = await Category.findOne({ slug: 'آموزش-مقدماتی-حسابداری' }).exec();
+        if (!acc1Category) {
+            return res.render('acc1', { articles: [], videos: [], scores: [] }); // ✅ مقداردهی `videos` هنگام عدم وجود `acc1Category`
         }
 
+        const articles = await Article.find({ categories: acc1Category._id })
+            .sort({ createdAt: -1 })
+            .populate([{ path: 'categories', select: 'name' }])
+            .exec();
+
+        const scores = await ScoresCource.find({ user: req.session.userId }).exec();
+        const videos = await VideoForCategory.find({ articleId: acc1Category._id }).exec();
+
+        articles.sort((a, b) => a.createdAt - b.createdAt);
+
+        res.render('acc1', { articles, scores, videos }); // ✅ مقداردهی صحیح `videos`
+    } catch (error) {
+        console.log(error);
+        res.render('acc1', { articles: [], videos: [], scores: [] }); // ✅ جلوگیری از خطای `undefined` در صورت وقوع خطا
     }
+}
 
     async acc2(req, res) {
         try {
