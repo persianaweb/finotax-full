@@ -125,9 +125,11 @@ router.post('/question-modules/edit/:id', QuestionControllerForSingleModules.upd
 //modules Routes
 router.get('/modules/create', modulesController.create);
 router.post('/modules/create', modulesController.store); 
+
 //Edit modules
 router.get('/modules/:id/edit', modulesController.edit);
 router.post('/modules/edit/:id', modulesController.update);
+
 //Delete question
 router.post('/modules/:id', modulesController.destroy);
 

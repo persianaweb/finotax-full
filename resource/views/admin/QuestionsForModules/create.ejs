@@ -11,7 +11,7 @@
         <form class="container" action="/admin/question-modules/create" method="POST">
             <!-- انتخاب مقاله -->
             <label class="d-block" for="blogId">انتخاب دوره موردنظر:</label>
-            <select class="form-control form-control-chosen p-1" name="blogId" required>
+            <select class="form-control form-control-chosen p-1" name="blogId" required> 
                 <% blogs.forEach(blog=> { %>
                     <option value="<%= blog._id %>">
                         <%= blog.title %>

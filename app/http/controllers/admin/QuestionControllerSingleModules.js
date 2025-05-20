@@ -9,7 +9,7 @@ class QuestionController {
         try {
             const title = 'Question Create';
             const blogs = await Modules.find();
-            res.render('admin/QuestionsForModules/create', { title, blogs });
+            res.render('admin/QuestionsForModules/create', { title, blogs }); 
         } catch (error) {
             console.log(error);
         }
