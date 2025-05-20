@@ -49,6 +49,9 @@ class homeController {
 
             const videos = await VideoForCategory.find({ articleId: acc1Category._id }).exec();
             articles.sort((a, b) => a.createdAt - b.createdAt);
+             if (!videos) {
+                return res.render('acc1', { articles: [] });
+            }
             // return res.json(videos)ک
 
             res.render('acc1', { articles, scores, videos });
