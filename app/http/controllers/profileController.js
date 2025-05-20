@@ -14,16 +14,19 @@ class profileController {
     constructor() {
         autoBind(this);
     }
-
     async index(req, res) {
         try {
             const user = await User.findById(req.session.userId).populate('subscription');
 
             if (!user || !user.subscription) {
-                // return res.json(user);
-                return res.render('profile/index', { user: null });
+                return res.render('profile/index', {
+                    user: null,
+                    articleAnswers: [], // ✅ مقداردهی پیش‌فرض
+                    moduleAnswers: [],
+                    subscription: null,
+                    remainingDays: 0
+                });
             }
-
 
             const articleAnswers = await QuizResult.find({ user: user._id })
                 .populate('article', 'title slug')
@@ -33,12 +36,9 @@ class profileController {
                 .populate('article', 'title slug')
                 .exec();
 
-
             const remainingDays = user.subscriptionEndDate
                 ? moment(user.subscriptionEndDate).diff(moment(), 'days')
                 : 0;
-
-            // return res.json(articleAnswers);
 
             res.render('profile/index', {
                 user,
@@ -50,7 +50,13 @@ class profileController {
 
         } catch (err) {
             console.error(err);
-            res.status(500).send("خطایی رخ داده است.");
+            res.render('profile/index', {
+                user: null,
+                articleAnswers: [], // ✅ مقداردهی در صورت بروز خطا
+                moduleAnswers: [],
+                subscription: null,
+                remainingDays: 0
+            });
         }
     }
 
